@@ -1,0 +1,447 @@
+\section{Front Matter}
+
+\subsection{Foreword}
+
+This chapter is a chaotic compilation and reinterpretation of the QR Code standard — inspired by the formatting of ISO/IEC 18004:2015 and ISO/IEC 18004:2024 (PNS ISO/IEC 18004:2025), as previewed by the Bureau of Philippine Standards of the Department of Trade and Industry of the Republic of the Philippines (DTI-BPS) and various sublicensed vendors (thanks for the sneak peeks, y’all).  While I did not have access to the full official standard, as they are expensive and very inaccessible, I pieced together this version through publicly available research papers, books, online articles, Wikipedia rabbit holes, and the likes.
+
+I also added annotations throughout, partly for my own understanding and to help other folks who want to get into QR code encoding/decoding without being legally or financially overwhelmed.
+
+This isn’t an official standard; It’s not ISO-blessed. This is a stitched-together knowledge quilt. But if it helps you understand how QR codes work, or if you’re building your own encoder/decoder (like I am!), then mission accomplished.
+
+Happy scanning, bestie :3
+
+\subsection{Disclaimer}
+
+This chapter is an independent, non-official reinterpretation and annotation of the QR Code standard, compiled for educational and reference purposes. It is not affiliated with, endorsed by, or a substitute for any official publication by the International Organization for Standardization (ISO), the International Electrotechnical Commission (IEC), or any related body.
+
+All technical descriptions and explanations contained herein are derived from publicly accessible and legally obtainable sources, including but not limited to academic research papers, books, developer documentation, online articles, and collaborative knowledge bases such as Wikipedia. Efforts have been made to avoid verbatim copying from proprietary sources.
+
+Annotations, commentary, and interpretations provided throughout this document are original contributions by the author, intended to clarify complex topics, offer implementation guidance, and promote accessibility and understanding among developers, researchers, and hobbyists.
+
+This publication is provided under the principles of fair use and fair dealing, with respect to educational, scholarly, and transformative purposes. It should not be relied upon as an official or authoritative specification for compliance, certification, or regulation.
+
+For formal or legal applications, readers are encouraged to consult the original ISO/IEC 18004 standard or its national equivalents.
+
+\subsection{Introduction}
+
+According to wikipedia, a QR code, quick-response code, is a type of two-dimensional
+\href{https://en.wikipedia.org/wiki/Barcode\#Matrix_(2D)_codes}{matrix
+barcode} invented in 1994 by
+\href{https://en.wikipedia.org/wiki/Masahiro_Hara}{Masahiro Hara} of
+\href{https://en.wikipedia.org/wiki/Japan}{Japanese} company
+\href{https://en.wikipedia.org/wiki/Denso\#DENSO_Wave}{Denso Wave} for
+labelling automobile parts. It features black squares on a white
+background with
+\href{https://en.wikipedia.org/wiki/Fiducial_markers}{fiducial markers},
+readable by imaging devices like cameras, and processed using
+\href{https://en.wikipedia.org/wiki/Reed\%E2\%80\%93Solomon_error_correction}{Reed--Solomon
+error correction} until the image can be appropriately interpreted. The
+required data is then extracted from patterns that are present in both
+the horizontal and the vertical components of the QR image.\cite{wikipedia-qr}
+
+\mainmatter
+
+\section{Definition of Terms}
+
+\subsection{Abbreviations}
+
+\begin{tabbing}
+  2D \hspace{3em} \= two-dimensional \cite{mw-2d} \\
+  QR code \> quick-response code \cite{wikipedia-qr} \\
+  API \> Application Programming Interface \cite{wikipedia-api} \\
+\end{tabbing}
+
+\section{Symbol Description}
+
+QR code is a 2D barcode with the following characteristics:
+
+\begin{enumerate}
+  \item Formats:
+    \begin{enumerate}[label=\alph*.]
+      \item QR code, the full version; and
+      \item Micro QR code, a smaller version of the QR code standard for applications where symbol size is limited.
+    \end{enumerate}
+  \item Character Set\cite{wikipedia-qr}:
+    \begin{enumerate}[label=\alph*.]
+      \item Numeric: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+      \item Alphanumeric: 0–9, A–Z (upper-case only), space, \$ (dollar sign), \% (percent symbol), * (asterisk), + (plus symbol), - (dash), . (period), / (slash), : (colon) 
+      \item Binary/byte: \nameref{sec:ISO/IEC 8859-1} as described below.
+      \item Kanji/kana: \nameref{sec:Shift JIS X 0208} as described below.
+    \end{enumerate}
+\end{enumerate}
+
+\section{Character Sets}
+
+\subsection{ISO/IEC 8859-1}
+\label{sec:ISO/IEC 8859-1}
+
+According to Wikipedia, ISO/IEC~8859-1:1998, \emph{Information technology---\href{https://en.wikipedia.org/wiki/8-bit_computing}{8-bit} single-\href{https://en.wikipedia.org/wiki/Byte}{byte} coded graphic \href{https://en.wikipedia.org/wiki/Character_(computing)}{character} sets---Part 1: Latin alphabet No.~1}, is part of the \href{https://en.wikipedia.org/wiki/ISO/IEC_8859}{ISO/IEC 8859} series of \href{https://en.wikipedia.org/wiki/ASCII}{ASCII}-based standard \href{https://en.wikipedia.org/wiki/Character_encoding}{character encodings}, first edition published in 1987. ISO/IEC~8859-1 encodes what it refers to as ``Latin alphabet no.~1'', consisting of 191 \href{https://en.wikipedia.org/wiki/Character_(computing)}{characters} from the \href{https://en.wikipedia.org/wiki/Latin_script}{Latin script}\cite{wikipedia-ISO-8859-1}.
+
+
+\subsubsection{Decode (Code → Character)}
+
+Remove the prefix 0x.
+
+Split into two digits:
+
+First digit = row (X).
+
+Second digit = column (Y).
+
+Locate row X0 in the table.
+
+Move to column Y.
+
+The cell contains the character.
+
+\begin{enumerate}
+  \item To look for a specific character using its code---for example, code 0x57---one must:
+    \begin{enumerate}[label=\alph*.]
+      \item Remove the hex prefix '0x' first.
+      \item Then, split the resulting code in 2.
+      \item Afterwards, use the first digit to locate the row of interest. In this example, it is row 5.
+      \item Next, use the second digit to locate the column of interest. In this example, it is column 7.
+      \item Now, find the intersection of the row and column of interest. The resulting cell is the character. In this example, it is the upper-case letter 'W'.
+    \end{enumerate}
+  \item To get the code of a character---for example, the exclamation mark---one must:
+    \begin{enumerate}[label=\alph*.]
+      \item Find the character of interest in the table. If it is not in the table, then it means that the character set does not contain said character.
+      \item After finding said character, get its row and column. In this example, the row and column is 2 and 1 respectively.
+      \item Then, combine '0x' hex prefix, the row and column digit of said character. In this example, it should result to '0x21'.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{table}[H]
+\centering
+\caption{ISO/IEC 8859-1}
+\vspace{10pt}
+\begin{tabular}{|Sc|>{\centering\arraybackslash}p{3.5em}|*{12}{>{\centering\arraybackslash}p{1em}|}>{\centering\arraybackslash}p{3em}|*{2}{>{\centering\arraybackslash}p{1em}|}}
+\hline
+   & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & A & B & C & D & E & F \\ \hline
+00 & & & & & & & & & & & & & & & & \\ \hline
+10 & & & & & & & & & & & & & & & & \\ \hline
+20 & \wikitablefootnote{[SP]}{Space_character}{Space character} & \wiki{!} & \wiki["]{\%22} &
+    \wiki[\#]{Number_sign} & \wiki{\$} & \wiki[\%]{\%25} & \wiki[\&]{\%26} &
+    \wiki[\textquotesingle{}]{\%27} & \wiki{(} & \wiki{)} & \wiki{*} & \wiki[+]{\%2B} &
+    \wiki{,} & \wiki{-} & \wiki[.]{Full_stop} & \wiki[/]{Slash_(punctuation)} \\ \hline
+30 & \wiki{0} & \wiki{1} & \wiki{2} & \wiki{3} & \wiki{4} & \wiki{5} & \wiki{6} & \wiki{7} &
+    \wiki{8} & \wiki{9} & \wiki[:]{Colon_(punctuation)} & \wiki{;} & \wiki[\textless{}]{Less-than_sign} &
+    \wiki[=]{\%3D} & \wiki[\textgreater{}]{Greater-than_sign} & \wiki[?]{\%3F} \\ \hline
+40 & \wiki{@} & \wiki{A} & \wiki{B} & \wiki{C} & \wiki{D} & \wiki{E} & \wiki{F} & \wiki{G} &
+    \wiki{H} & \wiki{I} & \wiki{J} & \wiki{K} & \wiki{L} & \wiki{M} & \wiki{N} & \wiki{O} \\ \hline
+50 & \wiki{P} & \wiki{Q} & \wiki{R} & \wiki{S} & \wiki{T} & \wiki{U} & \wiki{V} & \wiki{W} &
+    \wiki{X} & \wiki{Y} & \wiki{Z} & \wiki[{[}]{Left_square_bracket} & \wiki[\textbackslash{}]{Backslash} &
+    \wiki[{]}]{Right_square_bracket} & \wiki[\string^]{\%5E} & \wiki[\_]{Underscore} \\ \hline
+60 & \wiki[`]{\%60} & \wiki[a]{A} & \wiki[b]{B} & \wiki[c]{C} & \wiki[d]{D} & \wiki[e]{E} & \wiki[f]{F} &
+    \wiki[g]{G} & \wiki[h]{H} & \wiki[i]{I} & \wiki[j]{J} & \wiki[k]{K} & \wiki[l]{L} & \wiki[m]{M} &
+    \wiki[n]{N} & \wiki[o]{O} \\ \hline
+70 & \wiki[p]{P} & \wiki[q]{Q} & \wiki[r]{R} & \wiki[s]{S} & \wiki[t]{T} & \wiki[u]{U} & \wiki[v]{V} &
+    \wiki[w]{W} & \wiki[x]{X} & \wiki[y]{Y} & \wiki[z]{Z} & \wiki[\{]{Left_curly_bracket} &
+    \wiki[\textbar{}]{Vertical_bar} & \wiki[\}]{Right_curly_bracket} & \wiki[\textasciitilde{}]{~}
+    & \\ \hline
+80 & & & & & & & & & & & & & & & & \\ \hline
+90 & & & & & & & & & & & & & & & & \\ \hline
+A0 & \wikitablefootnote{[NBSP]}{NBSP}{Non-breaking space} & \wiki[¡]{\%C2\%A1} & \wiki[¢]{\%C2\%A2} &
+    \wiki[£]{\%C2\%A3} & \wiki[¤]{\%C2\%A4} & \wiki[¥]{\%C2\%A5} & \wiki[¦]{\%C2\%A6} & \wiki[§]{\%C2\%A7} &
+    \wiki[¨]{\%C2\%A8} & \wiki[©]{\%C2\%A9} & \wiki[ª]{\%C2\%AA} & \wiki[«]{\%C2\%AB} & \wiki[¬]{\%C2\%AC} &
+    \wikitablefootnote{[SHY]}{Soft_hyphen}{Soft hyphen} & \wiki[®]{\%C2\%AE} & \wiki[¯]{\%C2\%AF} \\ \hline
+B0 & \wiki[°]{\%C2\%B0} & \wiki[±]{\%C2\%B1} & \wiki[²]{Superscript} & \wiki[³]{Superscript} &
+    \wiki[´]{\%C2\%B4} & \wiki[µ]{\%CE\%9C} & \wiki[¶]{\%C2\%B6} & \wiki[·]{\%C2\%B7} & \wiki[¸]{\%C2\%B8} &
+    \wiki[¹]{Superscript} & \wiki[º]{\%C2\%BA} & \wiki[»]{\%C2\%BB} &
+    \wiki[¼]{Fraction\#Typographical_variations} & \wiki[½]{\%C2\%BD} &
+    \wiki[¾]{Fraction\#Typographical_variations} & \wiki[¿]{\%C2\%BF} \\ \hline
+C0 & \wiki[À]{\%C3\%80} &\wiki[Á]{\%C3\%81} & \wiki[Â]{\%C3\%82} & \wiki[Ã]{\%C3\%83} & \wiki[Ä]{\%C3\%84} &
+    \wiki[Å]{\%C3\%85} & \wiki[Æ]{\%C3\%86} & \wiki[Ç]{\%C3\%87} & \wiki[È]{\%C3\%88} & \wiki[É]{\%C3\%89} &
+    \wiki[Ê]{\%C3\%8A} & \wiki[Ë]{\%C3\%8B} & \wiki[Ì]{\%C3\%8C} & \wiki[Í]{\%C3\%8D} & \wiki[Î]{\%C3\%8E} &
+    \wiki[Ï]{\%C3\%8F} \\ \hline
+D0 & \wiki[Ð]{\%C3\%90} & \wiki[Ñ]{\%C3\%91} & \wiki[Ò]{\%C3\%92} & \wiki[Ó]{\%C3\%93} &
+    \wiki[Ô]{\%C3\%94} & \wiki[Õ]{\%C3\%95} & \wiki[Ö]{\%C3\%96} & \wiki[×]{\%C3\%97} & \wiki[Ø]{\%C3\%98} &
+    \wiki[Ù]{\%C3\%99} & \wiki[Ú]{\%C3\%9A} & \wiki[Û]{\%C3\%9B} & \wiki[Ü]{\%C3\%9C} & \wiki[Ý]{\%C3\%9D} &
+    \wiki[Þ]{\%C3\%9E} & \wiki[ß]{\%C3\%9F} \\ \hline
+E0 & \wiki[à]{\%C3\%80} & \wiki[á]{\%C3\%81} & \wiki[â]{\%C3\%82} & \wiki[ã]{\%C3\%83} &
+    \wiki[ä]{\%C3\%84} & \wiki[å]{\%C3\%85} & \wiki[æ]{\%C3\%86} & \wiki[ç]{\%C3\%87} & \wiki[è]{\%C3\%88} &
+    \wiki[é]{\%C3\%89} & \wiki[ê]{\%C3\%8A} & \wiki[ë]{\%C3\%8B} & \wiki[ì]{\%C3\%8C} & \wiki[í]{\%C3\%8D} &
+    \wiki[î]{\%C3\%8E} & \wiki[ï]{\%C3\%8F} \\ \hline
+F0 & \wiki[ð]{\%C3\%90} & \wiki[ñ]{\%C3\%91} & \wiki[ò]{\%C3\%92} & \wiki[ó]{\%C3\%93} &
+    \wiki[ô]{\%C3\%94} & \wiki[õ]{\%C3\%95} & \wiki[ö]{\%C3\%96} & \wiki[÷]{\%C3\%B7} & \wiki[ø]{\%C3\%98} &
+    \wiki[ù]{\%C3\%99} & \wiki[ú]{\%C3\%9A} & \wiki[û]{\%C3\%9B} & \wiki[ü]{\%C3\%9C} & \wiki[ý]{\%C3\%9D} &
+    \wiki[þ]{\%C3\%9E} & \wiki[ÿ]{\%C5\%B8} \\ \hline
+\end{tabular}
+\end{table}
+
+Symbols and Punctuations: 0x21–2F, 0x3A–3F, 0x40, 0x5B–60, 0x7B–7E, 0xA1–A9, 0xAB–AC, 0xAE–B1, 0xB4–B8, 0xBB, and 0xBF
+
+\subsection{Shift JIS X 0208}
+\label{sec:Shift JIS X 0208}
+
+\input{archive/qr/shift_jis_x_0208.tex}
+
+\section{Versions}
+
+\subsection{Explanation}
+
+According to Denso Wave Incorporated, QR Code versions determine the data capacity and structure of a code\cite{denso-wave-qr-versions}.
+
+The following tables are sourced from the official QR Code documentation provided by Denso Wave\cite{denso-wave-qr-versions}.
+
+The figures in the Numeral, Alphanumeric, Binary and Kanji columns indicate the maximum allowable number of respective characters, including those for the data bit number.
+
+For example, when using the Version 1 QR Code with correction level L, the maximum allowable characters for data bit number, numerals, binaries, and Kanji are 152, 25, 17, and 10 respectively.
+
+As explained by Denso Wave in the aforementioned documentation, to determine the version of the QR code to use, suppose the data to be input consists of 100-digit numerals. This can be achieved by following the steps described below\cite{denso-wave-qr-versions}:
+
+\begin{enumerate}
+  \item In the QR Code table, choose "Numeric" as the type of input data.
+  \item Choose an error correction level from the options of L, M, Q and H. For example, the error correction level that will be used is M.
+  \item Find a figure in the table, 100 or over and the closest to 100 that is at the intersection with a correction level M row. The number of the version row that contains this figure is the most appropriate version number. We can see at the tables below that the version closest to that is Version 3 with capacity for up to 101 numeric characters at error correction M. 
+\end{enumerate}
+
+\subsection{Micro QR Code}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
+\hline
+  Version &
+  Modules &
+  ECC Level &
+  Numeric &
+  Alphanumeric &
+  Binary &
+  Kanji \\ \hline
+                M1  &                 11  & - & 5  & -  & -  & - \\ \hline
+\multirow{2}{*}{M2} & \multirow{2}{*}{13} & L & 10 & 6  & -  & - \\ \cline{3-7}
+                    &                     & M & 8  & 5  & -  & - \\ \hline
+\multirow{2}{*}{M3} & \multirow{2}{*}{15} & L & 23 & 14 & 9  & 6 \\ \cline{3-7}
+                    &                     & M & 18 & 11 & 7  & 4 \\ \hline
+\multirow{3}{*}{M4} & \multirow{3}{*}{17} & L & 35 & 21 & 15 & 9 \\ \cline{3-7}
+                    &                     & M & 30 & 18 & 13 & 8 \\ \cline{3-7}
+                    &                     & Q & 21 & 13 & 9  & 5 \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{QR Code}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
+\hline
+  Version &
+  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
+  Numeric &
+  Alphanumeric &
+  Binary &
+  Kanji \\ \hline
+\multirow{4}{*}{ 1} & \multirow{4}{*}{21} & L & 152  & 41  & 25  & 17  & 10  \\ \cline{3-8}
+                    &                     & M & 128  & 34  & 20  & 14  & 8   \\ \cline{3-8}
+                    &                     & Q & 104  & 27  & 16  & 11  & 7   \\ \cline{3-8}
+                    &                     & H & 72   & 17  & 10  & 7   & 4   \\ \hline
+\multirow{4}{*}{ 2} & \multirow{4}{*}{25} & L & 272  & 77  & 47  & 32  & 20  \\ \cline{3-8}
+                    &                     & M & 224  & 63  & 38  & 26  & 16  \\ \cline{3-8}
+                    &                     & Q & 176  & 48  & 29  & 20  & 12  \\ \cline{3-8}
+                    &                     & H & 128  & 34  & 20  & 14  & 8   \\ \hline
+\multirow{4}{*}{ 3} & \multirow{4}{*}{29} & L & 440  & 127 & 77  & 53  & 32  \\ \cline{3-8}
+                    &                     & M & 352  & 101 & 61  & 42  & 26  \\ \cline{3-8}
+                    &                     & Q & 272  & 77  & 47  & 32  & 20  \\ \cline{3-8}
+                    &                     & H & 208  & 58  & 35  & 24  & 15  \\ \hline
+\multirow{4}{*}{ 4} & \multirow{4}{*}{33} & L & 640  & 187 & 114 & 78  & 48  \\ \cline{3-8}
+                    &                     & M & 512  & 149 & 90  & 62  & 38  \\ \cline{3-8}
+                    &                     & Q & 384  & 111 & 67  & 46  & 28  \\ \cline{3-8}
+                    &                     & H & 288  & 82  & 50  & 34  & 21  \\ \hline
+\multirow{4}{*}{ 5} & \multirow{4}{*}{37} & L & 864  & 255 & 154 & 106 & 65  \\ \cline{3-8}
+                    &                     & M & 688  & 202 & 122 & 84  & 52  \\ \cline{3-8}
+                    &                     & Q & 496  & 144 & 87  & 60  & 37  \\ \cline{3-8}
+                    &                     & H & 368  & 106 & 64  & 44  & 27  \\ \hline
+\multirow{4}{*}{ 6} & \multirow{4}{*}{41} & L & 1088 & 322 & 195 & 134 & 82  \\ \cline{3-8}
+                    &                     & M & 864  & 255 & 154 & 106 & 65  \\ \cline{3-8}
+                    &                     & Q & 608  & 178 & 108 & 74  & 45  \\ \cline{3-8}
+                    &                     & H & 480  & 139 & 84  & 58  & 36  \\ \hline
+\multirow{4}{*}{ 7} & \multirow{4}{*}{45} & L & 1248 & 370 & 224 & 154 & 95  \\ \cline{3-8}
+                    &                     & M & 992  & 293 & 178 & 122 & 75  \\ \cline{3-8}
+                    &                     & Q & 704  & 207 & 125 & 86  & 53  \\ \cline{3-8}
+                    &                     & H & 528  & 154 & 93  & 64  & 39  \\ \hline
+\multirow{4}{*}{ 8} & \multirow{4}{*}{49} & L & 1552 & 461 & 279 & 192 & 118 \\ \cline{3-8}
+                    &                     & M & 1232 & 365 & 221 & 152 & 93  \\ \cline{3-8}
+                    &                     & Q & 880  & 259 & 157 & 108 & 66  \\ \cline{3-8}
+                    &                     & H & 688  & 202 & 122 & 84  & 52  \\ \hline
+\multirow{4}{*}{ 9} & \multirow{4}{*}{53} & L & 1856 & 552  & 335  & 230 & 141 \\ \cline{3-8}
+                    &                     & M & 1456 & 432  & 262  & 180 & 111 \\ \cline{3-8}
+                    &                     & Q & 1056 & 312  & 189  & 130 & 80  \\ \cline{3-8}
+                    &                     & H & 800  & 235  & 143  & 98  & 60  \\ \hline
+\multirow{4}{*}{10} & \multirow{4}{*}{57} & L & 2192 & 652  & 395  & 271 & 167 \\ \cline{3-8}
+                    &                     & M & 1728 & 513  & 311  & 213 & 131 \\ \cline{3-8}
+                    &                     & Q & 1232 & 364  & 221  & 151 & 93  \\ \cline{3-8}
+                    &                     & H & 976  & 288  & 174  & 119 & 74  \\ \hline
+\multirow{4}{*}{11} & \multirow{4}{*}{61} & L & 2592 & 772  & 468  & 321 & 198 \\ \cline{3-8}
+                    &                     & M & 2032 & 604  & 366  & 251 & 155 \\ \cline{3-8}
+                    &                     & Q & 1440 & 427  & 259  & 177 & 109 \\ \cline{3-8}
+                    &                     & H & 1120 & 331  & 200  & 137 & 85  \\ \hline
+\multirow{4}{*}{12} & \multirow{4}{*}{65} & L & 2960 & 883  & 535  & 367 & 226 \\ \cline{3-8}
+                    &                     & M & 2320 & 691  & 419  & 287 & 177 \\ \cline{3-8}
+                    &                     & Q & 1648 & 489  & 296  & 203 & 125 \\ \cline{3-8}
+                    &                     & H & 1264 & 374  & 227  & 155 & 96  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Version &
+  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
+  Numeric &
+  Alphanumeric &
+  Binary &
+  Kanji \\ \hline
+\multirow{4}{*}{13} & \multirow{4}{*}{ 69} & L & 3424 & 1022 & 619  & 425  & 262 \\ \cline{3-8}
+                    &                      & M & 2672 & 796  & 483  & 331  & 204 \\ \cline{3-8}
+                    &                      & Q & 1952 & 580  & 352  & 241  & 149 \\ \cline{3-8}
+                    &                      & H & 1440 & 427  & 259  & 177  & 109 \\ \hline
+\multirow{4}{*}{14} & \multirow{4}{*}{ 73} & L & 3688 & 1101 & 667  & 458  & 282 \\ \cline{3-8}
+                    &                      & M & 2920 & 871  & 528  & 362  & 223 \\ \cline{3-8}
+                    &                      & Q & 2088 & 621  & 376  & 258  & 159 \\ \cline{3-8}
+                    &                      & H & 1576 & 468  & 283  & 194  & 120 \\ \hline
+\multirow{4}{*}{15} & \multirow{4}{*}{ 77} & L & 4184 & 1250 & 758  & 520  & 320 \\ \cline{3-8}
+                    &                      & M & 3320 & 991  & 600  & 412  & 254 \\ \cline{3-8}
+                    &                      & Q & 2360 & 703  & 426  & 292  & 180 \\ \cline{3-8}
+                    &                      & H & 1784 & 530  & 321  & 220  & 136 \\ \hline
+\multirow{4}{*}{16} & \multirow{4}{*}{ 81} & L & 4712 & 1408 & 854  & 586  & 361 \\ \cline{3-8}
+                    &                      & M & 3624 & 1082 & 656  & 450  & 277 \\ \cline{3-8}
+                    &                      & Q & 2600 & 775  & 470  & 322  & 198 \\ \cline{3-8}
+                    &                      & H & 2024 & 602  & 365  & 250  & 154 \\ \hline
+\multirow{4}{*}{17} & \multirow{4}{*}{ 85} & L & 5176 & 1548 & 938  & 644  & 397 \\ \cline{3-8}
+                    &                      & M & 4056 & 1212 & 734  & 504  & 310 \\ \cline{3-8}
+                    &                      & Q & 2936 & 876  & 531  & 364  & 224 \\ \cline{3-8}
+                    &                      & H & 2264 & 674  & 408  & 280  & 173 \\ \hline
+\multirow{4}{*}{18} & \multirow{4}{*}{ 89} & L & 5768 & 1725 & 1046 & 718  & 442 \\ \cline{3-8}
+                    &                      & M & 4504 & 1346 & 816  & 560  & 345 \\ \cline{3-8}
+                    &                      & Q & 3176 & 948  & 574  & 394  & 243 \\ \cline{3-8}
+                    &                      & H & 2504 & 746  & 452  & 310  & 191 \\ \hline
+\multirow{4}{*}{19} & \multirow{4}{*}{ 93} & L & 6360 & 1903 & 1153 & 792  & 488 \\ \cline{3-8}
+                    &                      & M & 5016 & 1500 & 909  & 624  & 384 \\ \cline{3-8}
+                    &                      & Q & 3560 & 1063 & 644  & 442  & 272 \\ \cline{3-8}
+                    &                      & H & 2728 & 813  & 493  & 338  & 208 \\ \hline
+\multirow{4}{*}{20} & \multirow{4}{*}{ 97} & L & 6888 & 2061 & 1249 & 858  & 528 \\ \cline{3-8}
+                    &                      & M & 5352 & 1600 & 970  & 666  & 410 \\ \cline{3-8}
+                    &                      & Q & 3880 & 1159 & 702  & 482  & 297 \\ \cline{3-8}
+                    &                      & H & 3080 & 919  & 557  & 382  & 235 \\ \hline
+\multirow{4}{*}{21} & \multirow{4}{*}{101} & L & 7456 & 2232 & 1352 & 929  & 572 \\ \cline{3-8}
+                    &                      & M & 5712 & 1708 & 1035 & 711  & 438 \\ \cline{3-8}
+                    &                      & Q & 4096 & 1224 & 742  & 509  & 314 \\ \cline{3-8}
+                    &                      & H & 3248 & 969  & 587  & 403  & 248 \\ \hline
+\multirow{4}{*}{22} & \multirow{4}{*}{105} & L & 8048 & 2409 & 1460 & 1003 & 618 \\ \cline{3-8}
+                    &                      & M & 6256 & 1872 & 1134 & 779  & 480 \\ \cline{3-8}
+                    &                      & Q & 4544 & 1358 & 823  & 565  & 348 \\ \cline{3-8}
+                    &                      & H & 3536 & 1056 & 640  & 439  & 270 \\ \hline
+\multirow{4}{*}{23} & \multirow{4}{*}{109} & L & 8752 & 2620 & 1588 & 1091 & 672 \\ \cline{3-8}
+                    &                      & M & 6880 & 2059 & 1248 & 857  & 528 \\ \cline{3-8}
+                    &                      & Q & 4912 & 1468 & 890  & 611  & 376 \\ \cline{3-8}
+                    &                      & H & 3712 & 1108 & 672  & 461  & 284 \\ \hline
+\multirow{4}{*}{24} & \multirow{4}{*}{113} & L & 9392 & 2812 & 1704 & 1171 & 721 \\ \cline{3-8}
+                    &                      & M & 7312 & 2188 & 1326 & 911  & 561 \\ \cline{3-8}
+                    &                      & Q & 5312 & 1588 & 963  & 661  & 407 \\ \cline{3-8}
+                    &                      & H & 4112 & 1228 & 744  & 511  & 315 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Version &
+  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
+  Numeric &
+  Alphanumeric &
+  Binary &
+  Kanji \\ \hline
+\multirow{4}{*}{25} & \multirow{4}{*}{117} & L & 10208 & 3057 & 1853 & 1273 & 784  \\ \cline{3-8}
+                    &                      & M & 8000  & 2395 & 1451 & 997  & 614  \\ \cline{3-8}
+                    &                      & Q & 5744  & 1718 & 1041 & 715  & 440  \\ \cline{3-8}
+                    &                      & H & 4304  & 1286 & 779  & 535  & 330  \\ \hline
+\multirow{4}{*}{26} & \multirow{4}{*}{121} & L & 10960 & 3283 & 1990 & 1367 & 842  \\ \cline{3-8}
+                    &                      & M & 8496  & 2544 & 1542 & 1059 & 652  \\ \cline{3-8}
+                    &                      & Q & 6032  & 1804 & 1094 & 751  & 462  \\ \cline{3-8}
+                    &                      & H & 4768  & 1425 & 864  & 593  & 365  \\ \hline
+\multirow{4}{*}{27} & \multirow{4}{*}{125} & L & 11744 & 3517 & 2132 & 1465 & 902  \\ \cline{3-8}
+                    &                      & M & 9024  & 2701 & 1637 & 1125 & 692  \\ \cline{3-8}
+                    &                      & Q & 6464  & 1933 & 1172 & 805  & 496  \\ \cline{3-8}
+                    &                      & H & 5024  & 1501 & 910  & 625  & 385  \\ \hline
+\multirow{4}{*}{28} & \multirow{4}{*}{129} & L & 12248 & 3669 & 2223 & 1528 & 940  \\ \cline{3-8}
+                    &                      & M & 9544  & 2857 & 1732 & 1190 & 732  \\ \cline{3-8}
+                    &                      & Q & 6968  & 2085 & 1263 & 868  & 534  \\ \cline{3-8}
+                    &                      & H & 5288  & 1581 & 958  & 658  & 405  \\ \hline
+\multirow{4}{*}{29} & \multirow{4}{*}{133} & L & 13048 & 3909 & 2369 & 1628 & 1002 \\ \cline{3-8}
+                    &                      & M & 10136 & 3035 & 1839 & 1264 & 778  \\ \cline{3-8}
+                    &                      & Q & 7288  & 2181 & 1322 & 908  & 559  \\ \cline{3-8}
+                    &                      & H & 5608  & 1677 & 1016 & 698  & 430  \\ \hline
+\multirow{4}{*}{30} & \multirow{4}{*}{137} & L & 13880 & 4158 & 2520 & 1732 & 1066 \\ \cline{3-8}
+                    &                      & M & 10984 & 3289 & 1994 & 1370 & 843  \\ \cline{3-8}
+                    &                      & Q & 7880  & 2358 & 1429 & 982  & 604  \\ \cline{3-8}
+                    &                      & H & 5960  & 1782 & 1080 & 742  & 457  \\ \hline
+\multirow{4}{*}{31} & \multirow{4}{*}{141} & L & 14744 & 4417 & 2677 & 1840 & 1132 \\ \cline{3-8}
+                    &                      & M & 11640 & 3486 & 2113 & 1452 & 894  \\ \cline{3-8}
+                    &                      & Q & 8264  & 2473 & 1499 & 1030 & 634  \\ \cline{3-8}
+                    &                      & H & 6344  & 1897 & 1150 & 790  & 486  \\ \hline
+\multirow{4}{*}{32} & \multirow{4}{*}{145} & L & 15640 & 4686 & 2840 & 1952 & 1201 \\ \cline{3-8}
+                    &                      & M & 12328 & 3693 & 2238 & 1538 & 947  \\ \cline{3-8}
+                    &                      & Q & 8920  & 2670 & 1618 & 1112 & 684  \\ \cline{3-8}
+                    &                      & H & 6760  & 2022 & 1226 & 842  & 518  \\ \hline
+\multirow{4}{*}{33} & \multirow{4}{*}{149} & L & 16568 & 4965 & 3009 & 2068 & 1273 \\ \cline{3-8}
+                    &                      & M & 13048 & 3909 & 2369 & 1628 & 1002 \\ \cline{3-8}
+                    &                      & Q & 9368  & 2805 & 1700 & 1168 & 719  \\ \cline{3-8}
+                    &                      & H & 7208  & 2157 & 1307 & 898  & 553  \\ \hline
+\multirow{4}{*}{34} & \multirow{4}{*}{153} & L & 17528 & 5253 & 3183 & 2188 & 1347 \\ \cline{3-8}
+                    &                      & M & 13800 & 4134 & 2506 & 1722 & 1060 \\ \cline{3-8}
+                    &                      & Q & 9848  & 2949 & 1787 & 1228 & 756  \\ \cline{3-8}
+                    &                      & H & 7688  & 2301 & 1394 & 958  & 590  \\ \hline
+\multirow{4}{*}{35} & \multirow{4}{*}{157} & L & 18448 & 5529 & 3351 & 2303 & 1417 \\ \cline{3-8}
+                    &                      & M & 14496 & 4343 & 2632 & 1809 & 1113 \\ \cline{3-8}
+                    &                      & Q & 10288 & 3081 & 1867 & 1283 & 790  \\ \cline{3-8}
+                    &                      & H & 7888  & 2361 & 1431 & 983  & 605  \\ \hline
+\multirow{4}{*}{36} & \multirow{4}{*}{161} & L & 19472 & 5836 & 3537 & 2431 & 1496 \\ \cline{3-8}
+                    &                      & M & 15312 & 4588 & 2780 & 1911 & 1176 \\ \cline{3-8}
+                    &                      & Q & 10832 & 3244 & 1966 & 1351 & 832  \\ \cline{3-8}
+                    &                      & H & 8432  & 2524 & 1530 & 1051 & 647  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Version &
+  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
+  Numeric &
+  Alphanumeric &
+  Binary &
+  Kanji \\ \hline
+\multirow{4}{*}{37} & \multirow{4}{*}{165} & L & 20528 & 6153 & 3729 & 2563 & 1577 \\ \cline{3-8}
+                    &                      & M & 15936 & 4775 & 2894 & 1989 & 1224 \\ \cline{3-8}
+                    &                      & Q & 11408 & 3417 & 2071 & 1423 & 876  \\ \cline{3-8}
+                    &                      & H & 8768  & 2625 & 1591 & 1093 & 673  \\ \hline
+\multirow{4}{*}{38} & \multirow{4}{*}{169} & L & 21616 & 6479 & 3927 & 2699 & 1661 \\ \cline{3-8}
+                    &                      & M & 16816 & 5039 & 3054 & 2099 & 1292 \\ \cline{3-8}
+                    &                      & Q & 12016 & 3599 & 2181 & 1499 & 923  \\ \cline{3-8}
+                    &                      & H & 9136  & 2735 & 1658 & 1139 & 701  \\ \hline
+\multirow{4}{*}{39} & \multirow{4}{*}{173} & L & 22496 & 6743 & 4087 & 2809 & 1729 \\ \cline{3-8}
+                    &                      & M & 17728 & 5313 & 3220 & 2213 & 1362 \\ \cline{3-8}
+                    &                      & Q & 12656 & 3791 & 2298 & 1579 & 972  \\ \cline{3-8}
+                    &                      & H & 9776  & 2927 & 1774 & 1219 & 750  \\ \hline
+\multirow{4}{*}{40} & \multirow{4}{*}{177} & L & 23648 & 7089 & 4296 & 2953 & 1817 \\ \cline{3-8}
+                    &                      & M & 18672 & 5596 & 3391 & 2331 & 1435 \\ \cline{3-8}
+                    &                      & Q & 13328 & 3993 & 2420 & 1663 & 1024 \\ \cline{3-8}
+                    &                      & H & 10208 & 3057 & 1852 & 1273 & 784  \\ \hline
+\end{tabular}
+\end{table}
+
+https://en.wikiversity.org/wiki/Reed%E2%80%93Solomon_codes_for_coders
+
+https://www.thonky.com/qr-code-tutorial/module-placement-matrix

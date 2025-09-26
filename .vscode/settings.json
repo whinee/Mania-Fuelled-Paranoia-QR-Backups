@@ -1,0 +1,18 @@
+{
+  "latex-workshop.latex.tools": [
+    {
+      "name": "build",
+      "command": "./build.sh",
+      "args": ["%DOC%"]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "mermaid+latexmk",
+      "tools": ["build"]
+    }
+  ],
+  "latex-workshop.latex.watch.exclude": [
+    "figures/**"
+  ]
+}
