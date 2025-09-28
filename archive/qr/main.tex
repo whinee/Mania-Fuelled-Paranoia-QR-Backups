@@ -80,29 +80,20 @@ According to Wikipedia, ISO/IEC~8859-1:1998, \emph{Information technology---\hre
 
 \subsubsection{Decode (Code → Character)}
 
-Remove the prefix 0x.
-
-Split into two digits:
-
-First digit = row (X).
-
-Second digit = column (Y).
-
-Locate row X0 in the table.
-
-Move to column Y.
-
-The cell contains the character.
+\begin{enumerate}
+    \item Start with the hex code. Example: \texttt{0x2F}
+    \item Remove the prefix \texttt{0x}.
+    \item Split into two nibbles:
+    \begin{enumerate}[label=\alph*.]
+        \item High nibble = first hex digit (\texttt{2}).
+        \item Low nibble = second hex digit (\texttt{F}).
+    \end{enumerate}
+    \item Convert the high nibble into the row by multiplying it by 16 (hex shift). Example: \texttt{2} → \texttt{20}
+    \item The low nibble is the column. Example: \texttt{F}.
+    \item Locate the character at row \texttt{20}, column \texttt{F} in the table.
+\end{enumerate}
 
 \begin{enumerate}
-  \item To look for a specific character using its code---for example, code 0x57---one must:
-    \begin{enumerate}[label=\alph*.]
-      \item Remove the hex prefix '0x' first.
-      \item Then, split the resulting code in 2.
-      \item Afterwards, use the first digit to locate the row of interest. In this example, it is row 5.
-      \item Next, use the second digit to locate the column of interest. In this example, it is column 7.
-      \item Now, find the intersection of the row and column of interest. The resulting cell is the character. In this example, it is the upper-case letter 'W'.
-    \end{enumerate}
   \item To get the code of a character---for example, the exclamation mark---one must:
     \begin{enumerate}[label=\alph*.]
       \item Find the character of interest in the table. If it is not in the table, then it means that the character set does not contain said character.
@@ -115,7 +106,7 @@ The cell contains the character.
 \centering
 \caption{ISO/IEC 8859-1}
 \vspace{10pt}
-\begin{tabular}{|Sc|>{\centering\arraybackslash}p{3.5em}|*{12}{>{\centering\arraybackslash}p{1em}|}>{\centering\arraybackslash}p{3em}|*{2}{>{\centering\arraybackslash}p{1em}|}}
+\begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
 \hline
    & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & A & B & C & D & E & F \\ \hline
 00 & & & & & & & & & & & & & & & & \\ \hline

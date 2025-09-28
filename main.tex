@@ -1,5 +1,5 @@
 \documentclass[a4paper,oneside,english]{book}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=0.5in, top=1in]{geometry}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{array}
 \usepackage{hyperref} % Makes links clickable
@@ -43,10 +43,40 @@
 \usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{caption}
+\usepackage[CJK]{ucharclasses}
+
+\setmainfont[
+  Path=fonts/,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+  ItalicFont  = *-RegularItalic,
+  BoldItalicFont = *-BoldItalic,
+]{Manrope}
+\newfontfamily\Manrope{Manrope}
+\newfontfamily\ManropeBold[Path=fonts/]{Manrope-Bold.ttf}
+\newfontfamily\ManropeExtraBold[Path=fonts/]{Manrope-ExtraBold.ttf}
+\newfontfamily\ComicMono[Path=fonts/,Scale=0.9]{ComicMono.ttf}
+% \setmonofont[Path=fonts/,Scale=0.9]{ComicMono.ttf}
+\setmonofont[Path=fonts/]{CommitMono-700-Regular.otf}
+
+\newfontfamily\NotoSansRegular[Path=fonts/]{NotoSans-Regular.ttf}
+\newfontfamily\NotoSansJPRegular[Path=fonts/]{NotoSansJP-Regular.ttf}
+
+\setTransitionsForSymbols{\NotoSansRegular}{\Manrope}
+\setTransitionsForCJK{\NotoSansJPRegular}{\Manrope}
+
+\newcommand{\HUGETITLE}{\fontsize{4em}{5em}\selectfont\ManropeExtraBold}
+\newcommand{\HUGE}{\fontsize{3em}{4em}\selectfont\ManropeExtraBold}
+
+\let\oldfootnotesize\footnotesize
+\renewcommand{\footnotesize}{\normalsize}
+
+\captionsetup[longtable]{skip=0.5em}
 
 \makeindex
 
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{4}
 
 \title{Mania-Fuelled Paranoia: How to Survive the Apocalypse by Printing Your Sh*t in QR Codes v0.1.0}
@@ -65,28 +95,12 @@
   \wiki[{\detokenize{#1}}]{#2}\tablefootnote{\wiki[{\detokenize{#3}}]{#2}\label{#3}}%
 }
 
-\setmainfont[
-  Path=fonts/,
-  UprightFont = *-Regular,
-  BoldFont    = *-Bold,
-  ItalicFont  = *-RegularItalic,
-  BoldItalicFont = *-BoldItalic,
-]{Manrope}
-\newfontfamily\ManropeBold[Path=fonts/]{Manrope-Bold.ttf}
-\newfontfamily\ManropeExtraBold[Path=fonts/]{Manrope-ExtraBold.ttf}
-\newfontfamily\ComicMono[Path=fonts/,Scale=0.9]{ComicMono.ttf}
-% \setmonofont[Path=fonts/,Scale=0.9]{ComicMono.ttf}
-\setmonofont[Path=fonts/]{CommitMono-700-Regular.otf}
-
-\let\oldfootnotesize\footnotesize
-\renewcommand{\footnotesize}{\normalsize}
-
 \hyphenpenalty=9999
 \exhyphenpenalty=10000
 \sloppy
 \setlength{\emergencystretch}{4em}
 \setlength{\parskip}{1em}
-\setlength{\parindent}{1em}
+\setlength{\parindent}{0pt}
 \setlength{\cellspacetoplimit}{3pt}
 \setlength{\cellspacebottomlimit}{0pt}
 \renewcommand{\arraystretch}{1.2}
@@ -99,9 +113,6 @@
 \setlist[enumerate,1]{left=0em, itemsep=-10pt, topsep=0pt}
 \setlist[enumerate]{left=0em, itemsep=-10pt, topsep=-10pt}
 \setlist[itemize]{left=0em, itemsep=-10pt, topsep=-10pt, parsep=-10pt}
-
-\newcommand{\HUGETITLE}{\fontsize{4em}{5em}\selectfont\ManropeExtraBold}
-\newcommand{\HUGE}{\fontsize{3em}{4em}\selectfont\ManropeExtraBold}
 
 \patchcmd{\section}{\@afterindentfalse}{\@afterindenttrue}{}{}
 \patchcmd{\subsection}{\@afterindentfalse}{\@afterindenttrue}{}{}
