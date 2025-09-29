@@ -45,6 +45,8 @@
 \usepackage{amssymb}
 \usepackage{caption}
 \usepackage[CJK]{ucharclasses}
+\usepackage{makeidx}
+
 
 \setmainfont[
   Path=fonts/,
@@ -206,13 +208,41 @@ The document has been purposely made to be grayscale due to the following reason
     \end{enumerate}
 \end{enumerate}
 
-The author is trying her best to write this in Simplified Technical English, and has obviously failed.
+\section{Authorship and Methodology}
 
-\section{Notes for Future Me}
+This document was prepared with the assistance of artificial intelligence (AI) tools, used primarily for drafting, structuring, and refining language. 
 
-The citation from the materials have not been paraphrased as I thought that this will be only used for casual purposes. But if it does need to be used for academic purposes as well, then the paragraphs copied from the references should be paraphrased, in order to meet academic standards.
+All historical facts, interpretations, and arguments presented herein have been independently verified against primary or secondary sources. Every claim is supported with citations, and the work adheres to rigorous standards of documentation and cross-checking.
 
-I'm sorry for being manic this September 25, 2025. I hope that you are better now. Really, I do.
+The use of AI in authorship does not substitute for scholarly responsibility; rather, it served as an instrument to enhance clarity while ensuring that the content remains firmly grounded in verified evidence.
+
+\section{Academic and Professional Disclaimer}
+
+This document is not, by default, intended for formal academic or professional consumption. 
+It was written in a hybrid style that balances research discipline with personal reflection, 
+and in places it may appear unpolished, chaotic, or idiosyncratic by scholarly standards.  
+
+Certain sections draw directly from cited sources without paraphrasing. 
+This choice was made for personal archival clarity rather than to conform strictly to academic conventions.  
+While the author has verified the meaning and accuracy of all referenced material, 
+these passages should be treated with caution in formal contexts and paraphrased as appropriate.  
+
+If required, the author (writing under the pen name \emph{Lyra Phasma}) can prepare an academically conformant edition of this document, 
+including paraphrased references and standardized formatting.  
+Until such revisions are made, this text should be approached as a serious archival experiment 
+rather than a polished scholarly publication.
+
+\section{Notes for Future Reference}
+
+The author attempted to employ Simplified Technical English for clarity; however, full compliance has not been achieved. This is retained as a stylistic experiment rather than a strict technical requirement.
+
+\section{Personal Note}
+
+This document was first written in a burst of manic energy on June 2, 2025, and at many other restless moments besides.
+
+I keep this note here on purpose, as part of the archival character of the work, and as a reminder that every text carries the imprint of the state of mind in which it was made. 
+
+Behind these pages is simply a person who has been struggling for much of her life. I leave these words not only to record history, but also to be heard and, hopefully, understood. Thank you for reading, and for listening. I love you \texttt{:3}
 
 \section{License}
 
@@ -224,11 +254,12 @@ Mania-Fuelled Paranoia: How to Survive the Apocalypse by Printing Your Sh*t in Q
 
 \chapter{Mathematics}
 
-\input{archive/math/main.tex}
+\include{archive/math/main.tex}
 
 \chapter{QR Codes}
 
-\input{archive/qr/main.tex}
+\include{archive/qr/main.tex}
+
 
 \begin{lstlisting}[style=papercolor-light, language=Python, caption=Slay the print loop]
 #!/usr/bin/env python3
@@ -262,4 +293,5 @@ Nguyen, N. (2015-2020). \textit{PaperColor} [Theme]. Licensed under the MIT Lice
 
 % \lstinputlisting[style=papercolor-light, language={[LaTeX]TeX}]{main.tex}
 
+\printindex
 \end{document}
