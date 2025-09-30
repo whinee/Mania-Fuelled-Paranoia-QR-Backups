@@ -1,5 +1,5 @@
-\documentclass[a4paper,oneside,english]{book}
-\usepackage[margin=0.5in, top=1in]{geometry}
+\documentclass[a4paper,twoside,english]{book}
+\usepackage[margin=1in, left=1.25in]{geometry}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{array}
 \usepackage{hyperref} % Makes links clickable
@@ -116,6 +116,8 @@
 \setlist[enumerate]{left=0em, itemsep=-10pt, topsep=-10pt}
 \setlist[itemize]{left=0em, itemsep=-10pt, topsep=-10pt, parsep=-10pt}
 
+% \patchcmd{\chapter}{\clearpage}{}{}{}
+% \patchcmd{\chapter}{\cleardoublepage}{}{}{}
 \patchcmd{\section}{\@afterindentfalse}{\@afterindenttrue}{}{}
 \patchcmd{\subsection}{\@afterindentfalse}{\@afterindenttrue}{}{}
 \patchcmd{\subsubsection}{\@afterindentfalse}{\@afterindenttrue}{}{}
@@ -254,11 +256,11 @@ Mania-Fuelled Paranoia: How to Survive the Apocalypse by Printing Your Sh*t in Q
 
 \chapter{Mathematics}
 
-\include{archive/math/main.tex}
+\input{archive/math/main.tex}
 
 \chapter{QR Codes}
 
-\include{archive/qr/main.tex}
+\input{archive/qr/main.tex}
 
 
 \begin{lstlisting}[style=papercolor-light, language=Python, caption=Slay the print loop]
