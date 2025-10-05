@@ -1,5 +1,5 @@
-\documentclass[a4paper,twoside,english]{book}
-\usepackage[margin=1in, left=1.25in]{geometry}
+\documentclass[12pt,a4paper,english,twoside]{report}
+\usepackage[margin=1in,left=1.5in]{geometry}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{array}
 \usepackage{hyperref} % Makes links clickable
@@ -20,7 +20,6 @@
 \usepackage{booktabs}
 \usepackage{calc}
 \usepackage{xstring}
-\usepackage{geometry}
 \usepackage{cellspace}
 \usepackage{tablefootnote}
 \usepackage{nameref}
@@ -46,7 +45,11 @@
 \usepackage{caption}
 \usepackage[CJK]{ucharclasses}
 \usepackage{makeidx}
+\usepackage{setspace}
 
+\onehalfspacing
+
+\AtBeginEnvironment{tabular}{\fontsize{12}{14}\selectfont}
 
 \setmainfont[
   Path=fonts/,
@@ -68,13 +71,13 @@
 \setTransitionsForSymbols{\NotoSansRegular}{\Manrope}
 \setTransitionsForCJK{\NotoSansJPRegular}{\Manrope}
 
-\newcommand{\HUGETITLE}{\fontsize{4em}{5em}\selectfont\ManropeExtraBold}
-\newcommand{\HUGE}{\fontsize{3em}{4em}\selectfont\ManropeExtraBold}
+\newcommand{\HUGETITLE}{\fontsize{3em}{4em}\selectfont\ManropeExtraBold}
+\newcommand{\HUGE}{\fontsize{2em}{3em}\selectfont\ManropeExtraBold}
 
 \let\oldfootnotesize\footnotesize
 \renewcommand{\footnotesize}{\normalsize}
 
-\captionsetup[longtable]{skip=0.5em}
+% \captionsetup[longtable]{skip=0.5em}
 
 \makeindex
 
@@ -106,7 +109,6 @@
 \setlength{\cellspacetoplimit}{3pt}
 \setlength{\cellspacebottomlimit}{0pt}
 \renewcommand{\arraystretch}{1.2}
-\AtBeginEnvironment{tabular}{\fontsize{10}{12}\selectfont}
 \titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{-0.5em}{\Huge}
 \titlespacing*{\chapter}
   {0pt}    % left margin
@@ -116,11 +118,13 @@
 \setlist[enumerate]{left=0em, itemsep=-10pt, topsep=-10pt}
 \setlist[itemize]{left=0em, itemsep=-10pt, topsep=-10pt, parsep=-10pt}
 
+\makeatletter
 % \patchcmd{\chapter}{\clearpage}{}{}{}
 % \patchcmd{\chapter}{\cleardoublepage}{}{}{}
 \patchcmd{\section}{\@afterindentfalse}{\@afterindenttrue}{}{}
 \patchcmd{\subsection}{\@afterindentfalse}{\@afterindenttrue}{}{}
 \patchcmd{\subsubsection}{\@afterindentfalse}{\@afterindenttrue}{}{}
+\makeatother
 
 \renewcommand{\contentsname}{Table of Contents}
 
@@ -164,28 +168,20 @@
 \DeclareDatamodelFields[type=field,datatype=date]{eventdate}
 \DeclareDatamodelFields[type=field,datatype=date]{urldate}
 
-\frontmatter
-
 \begin{titlepage}
   \centering
   \vspace*{\fill}
 
-  {\HUGETITLE\bfseries Mania-Fuelled Paranoia: \par}
-  \vspace{0.25em}
+  {\fontsize{2.75em}{3.5em}\selectfont\ManropeExtraBold Mania-Fuelled Paranoia: \par}
   {\HUGE How to Survive the Apocalypse by Printing Your Sh*t in QR Codes \par}
-  \vspace{1.5em}
-  {\Huge Version 0.1.0\par}
-  \vspace{2em}
-  {\Huge aka. Lyra Phasma\par}
-  \vspace{1em}
-  {\Huge June 5, 2025\par}
+  {\Large Version 0.1.0 \par}
+  {\Large aka. Lyra Phasma \par}
+  {\Large June 5, 2025 \par}
 
   \vspace*{\fill}
 \end{titlepage}
 
 \tableofcontents
-
-\mainmatter
 
 \chapter{Front Matter}
 

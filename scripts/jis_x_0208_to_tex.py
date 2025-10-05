@@ -8,7 +8,7 @@
 from openpyxl import load_workbook
 
 # Config
-ROW_BLOCK, COL_BLOCK = 15, 42  # split sizes
+ROW_BLOCK, COL_BLOCK = 32, 14 # split sizes
 START_CODE = 0x21
 END_CODE = 0x7E
 
@@ -22,10 +22,10 @@ def make_table(sheet, row_start, row_end, col_start, col_end):
     out = []
 
     # caption
-    out.append("\begin{table}[H]")
+    out.append("\\begin{table}[H]")
     out.append("\centering")
     out.append(
-        f"\\caption{{Shift JIS X 0208: {to_hex(row_start)}-{to_hex(row_end)} x {to_hex(col_start)}-{to_hex(col_end)}}}"
+        f"\\caption{{Shift JIS X 0208: {to_hex(row_start)}-{to_hex(row_end)} x {to_hex(col_start)}-{to_hex(col_end)}}}",
     )
     out.append(f"\\begin{{tabular}}{{{col_def}}}")
     out.append("\\hline")
@@ -36,7 +36,7 @@ def make_table(sheet, row_start, row_end, col_start, col_end):
 
     # body rows
     for r in range(row_start, row_end + 1):
-        row_cells = [f"\\\\textbf{{{to_hex(r)}}}"]  # row label
+        row_cells = [f"\\textbf{{{to_hex(r)}}}"]  # row label
         for c in range(col_start, col_end + 1):
             # Excel cells are 1-based, grid is 0-based → add 1
             val = sheet.cell(row=r+1, column=c+1).value
@@ -56,7 +56,7 @@ def main():
     #     return
 
     wb = load_workbook('data/JIS x 0208.xlsx')
-    sheet = wb.active  # assume grid is in the first sheet
+    sheet = wb['without rows and columns']  # assume grid is in the first sheet
 
     ROWS, COLS = END_CODE - START_CODE + 1, END_CODE - START_CODE + 1
 

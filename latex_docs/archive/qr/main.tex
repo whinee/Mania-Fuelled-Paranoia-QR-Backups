@@ -2,44 +2,42 @@
 
 \subsection{Foreword}
 
-This chapter is a chaotic compilation and reinterpretation of the QR Code standard — inspired by the formatting of ISO/IEC 18004:2015 and ISO/IEC 18004:2024 (PNS ISO/IEC 18004:2025), as previewed by the Bureau of Philippine Standards of the Department of Trade and Industry of the Republic of the Philippines (DTI-BPS) and various sublicensed vendors (thanks for the sneak peeks, y’all).  While I did not have access to the full official standard, as they are expensive and very inaccessible, I pieced together this version through publicly available research papers, books, online articles, Wikipedia rabbit holes, and the likes.
+% This chapter is a chaotic compilation and reinterpretation of the QR Code standard — inspired by the formatting of ISO/IEC 18004:2015 and ISO/IEC 18004:2024 (PNS ISO/IEC 18004:2025), as previewed by the Bureau of Philippine Standards of the Department of Trade and Industry of the Republic of the Philippines (DTI-BPS) and various sublicensed vendors (thanks for the sneak peeks, y’all).  While I did not have access to the full official standard, as they are expensive and very inaccessible, I pieced together this version through publicly available research papers, books, online articles, Wikipedia rabbit holes, and the likes.
 
-I also added annotations throughout, partly for my own understanding and to help other folks who want to get into QR code encoding/decoding without being legally or financially overwhelmed.
+% I also added annotations throughout, partly for my own understanding and to help other folks who want to get into QR code encoding/decoding without being legally or financially overwhelmed.
 
-This isn’t an official standard; It’s not ISO-blessed. This is a stitched-together knowledge quilt. But if it helps you understand how QR codes work, or if you’re building your own encoder/decoder (like I am!), then mission accomplished.
+% This isn’t an official standard; It’s not ISO-blessed. This is a stitched-together knowledge quilt. But if it helps you understand how QR codes work, or if you’re building your own encoder/decoder (like I am!), then mission accomplished.
+
+This chapter is an independent compilation and reinterpretation of the QR Code standard. 
+It is informed by publicly available resources such as research papers, technical books, developer documentation, and collaborative knowledge bases. 
+While I did not have access to the complete ISO/IEC publications due to their cost and limited availability, this document draws upon secondary sources and open references to provide an accessible explanation of QR Code structure and encoding principles.  
+
+Where appropriate, annotations and commentary have been added to clarify complex topics and to make the material approachable for readers who may wish to implement their own encoder or decoder, or who are simply curious about how QR codes function.  
+
+This is not an official or authoritative standard. It should be read as a study guide and commentary rather than as a normative reference.
+
 
 Happy scanning, bestie :3
 
 \subsection{Disclaimer}
 
-This chapter is an independent, non-official reinterpretation and annotation of the QR Code standard, compiled for educational and reference purposes. It is not affiliated with, endorsed by, or a substitute for any official publication by the International Organization for Standardization (ISO), the International Electrotechnical Commission (IEC), or any related body.
+This chapter is an independent, non-official reinterpretation of the QR Code standard, intended for educational and reference purposes. 
+It is not affiliated with, endorsed by, or a substitute for any publication by the International Organization for Standardization (ISO), the International Electrotechnical Commission (IEC), or any related standards body.  
 
-All technical descriptions and explanations contained herein are derived from publicly accessible and legally obtainable sources, including but not limited to academic research papers, books, developer documentation, online articles, and collaborative knowledge bases such as Wikipedia. Efforts have been made to avoid verbatim copying from proprietary sources.
+All technical descriptions herein are based on information from publicly accessible and legally obtainable sources.  Care has been taken to avoid reproducing verbatim text from proprietary publications.  Commentary and interpretation are original contributions of the author, provided to improve accessibility and understanding.  
 
-Annotations, commentary, and interpretations provided throughout this document are original contributions by the author, intended to clarify complex topics, offer implementation guidance, and promote accessibility and understanding among developers, researchers, and hobbyists.
+This work is offered under principles of fair use and fair dealing for scholarly and educational purposes. Readers requiring normative or compliance-related guidance should consult the official ISO/IEC 18004 standard or its national equivalents.
 
-This publication is provided under the principles of fair use and fair dealing, with respect to educational, scholarly, and transformative purposes. It should not be relied upon as an official or authoritative specification for compliance, certification, or regulation.
-
-For formal or legal applications, readers are encouraged to consult the original ISO/IEC 18004 standard or its national equivalents.
 
 \subsection{Introduction}
 
-According to wikipedia, a QR code, quick-response code, is a type of two-dimensional
-\href{https://en.wikipedia.org/wiki/Barcode\#Matrix_(2D)_codes}{matrix
-barcode} invented in 1994 by
-\href{https://en.wikipedia.org/wiki/Masahiro_Hara}{Masahiro Hara} of
-\href{https://en.wikipedia.org/wiki/Japan}{Japanese} company
-\href{https://en.wikipedia.org/wiki/Denso\#DENSO_Wave}{Denso Wave} for
-labelling automobile parts. It features black squares on a white
-background with
-\href{https://en.wikipedia.org/wiki/Fiducial_markers}{fiducial markers},
-readable by imaging devices like cameras, and processed using
-\href{https://en.wikipedia.org/wiki/Reed\%E2\%80\%93Solomon_error_correction}{Reed--Solomon
-error correction} until the image can be appropriately interpreted. The
-required data is then extracted from patterns that are present in both
-the horizontal and the vertical components of the QR image.\cite{wikipedia-qr}
+\subsection{Introduction}
 
-\mainmatter
+A QR Code (Quick Response Code) is a two-dimensional \href{https://en.wikipedia.org/wiki/Barcode\#Matrix_(2D)_codes}{matrix
+barcode} invented in 1994 by \href{https://en.wikipedia.org/wiki/Masahiro_Hara}{Masahiro Hara} of the \href{https://en.wikipedia.org/wiki/Japan}{Japanese} company \href{https://en.wikipedia.org/wiki/Denso\#DENSO_Wave}{Denso Wave}, originally for tracking automobile parts. 
+QR Codes are recognizable by their square modules arranged on a contrasting background, typically with position-detecting \href{https://en.wikipedia.org/wiki/Fiducial_markers}{fiducial markers} in three corners.  
+
+Data encoded within a QR Code is interpreted by imaging devices such as cameras, and recovered using error---correction algorithms—most notably \href{https://en.wikipedia.org/wiki/Reed\%E2\%80\%93Solomon_error_correction}{Reed--Solomon error correction}---to ensure robustness against noise and distortion. The encoded information is embedded in both the horizontal and vertical dimensions of the symbol, enabling compact and efficient data storage and retrieval.\cite{wikipedia-qr}
 
 \section{Definition of Terms}
 
@@ -73,7 +71,7 @@ QR code is a 2D barcode with the following characteristics:
 \section{Character Sets}
 
 \subsection{ISO/IEC 8859-1}
-\label{sec:ISO/IEC 8859-1}
+\label{sec:ISO-IEC-8859-1}
 
 According to Wikipedia, ISO/IEC~8859-1:1998, \emph{Information technology---\href{https://en.wikipedia.org/wiki/8-bit_computing}{8-bit} single-\href{https://en.wikipedia.org/wiki/Byte}{byte} coded graphic \href{https://en.wikipedia.org/wiki/Character_(computing)}{character} sets---Part 1: Latin alphabet No.~1}, is part of the \href{https://en.wikipedia.org/wiki/ISO/IEC_8859}{ISO/IEC 8859} series of \href{https://en.wikipedia.org/wiki/ASCII}{ASCII}-based standard \href{https://en.wikipedia.org/wiki/Character_encoding}{character encodings}, first edition published in 1987. ISO/IEC~8859-1 encodes what it refers to as ``Latin alphabet no.~1'', consisting of 191 \href{https://en.wikipedia.org/wiki/Character_(computing)}{characters} from the \href{https://en.wikipedia.org/wiki/Latin_script}{Latin script}\cite{wikipedia-ISO-8859-1}.
 
@@ -173,7 +171,7 @@ Symbols and Punctuations: 0x21–2F, 0x3A–3F, 0x40, 0x5B–60, 0x7B–7E, 0xA1
 
 According to Denso Wave Incorporated, QR Code versions determine the data capacity and structure of a code\cite{denso-wave-qr-versions}.
 
-The following tables are sourced from the official QR Code documentation provided by Denso Wave\cite{denso-wave-qr-versions}.
+The following tables are sourced from the official QR Code documentation provided by Denso Wave.
 
 The figures in the Numeral, Alphanumeric, Binary and Kanji columns indicate the maximum allowable number of respective characters, including those for the data bit number.
 
@@ -194,8 +192,8 @@ As explained by Denso Wave in the aforementioned documentation, to determine the
 \begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
 \hline
   Version &
-  Modules &
-  ECC Level &
+  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
   Numeric &
   Alphanumeric &
   Binary &
@@ -211,7 +209,10 @@ As explained by Denso Wave in the aforementioned documentation, to determine the
 \end{tabular}
 \end{table}
 
-\subsection{QR Code}
+\clearpage
+\cleardoublepage
+
+\subsection{QR Code\cite{denso-wave-qr-versions}}
 
 \begin{table}[H]
 \centering
@@ -222,7 +223,7 @@ As explained by Denso Wave in the aforementioned documentation, to determine the
   \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
   \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
   Numeric &
-  Alphanumeric &
+  \begin{tabular}[c]{@{}c@{}}Alpha-\\ numeric\end{tabular} &
   Binary &
   Kanji \\ \hline
 \multirow{4}{*}{ 1} & \multirow{4}{*}{21} & L & 152  & 41  & 25  & 17  & 10  \\ \cline{3-8}
@@ -261,6 +262,21 @@ As explained by Denso Wave in the aforementioned documentation, to determine the
                     &                     & M & 1456 & 432  & 262  & 180 & 111 \\ \cline{3-8}
                     &                     & Q & 1056 & 312  & 189  & 130 & 80  \\ \cline{3-8}
                     &                     & H & 800  & 235  & 143  & 98  & 60  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
+\hline
+  Version &
+  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
+  Numeric &
+  \begin{tabular}[c]{@{}c@{}}Alpha-\\ numeric\end{tabular} &
+  Binary &
+  Kanji \\ \hline
 \multirow{4}{*}{10} & \multirow{4}{*}{57} & L & 2192 & 652  & 395  & 271 & 167 \\ \cline{3-8}
                     &                     & M & 1728 & 513  & 311  & 213 & 131 \\ \cline{3-8}
                     &                     & Q & 1232 & 364  & 221  & 151 & 93  \\ \cline{3-8}
@@ -273,21 +289,6 @@ As explained by Denso Wave in the aforementioned documentation, to determine the
                     &                     & M & 2320 & 691  & 419  & 287 & 177 \\ \cline{3-8}
                     &                     & Q & 1648 & 489  & 296  & 203 & 125 \\ \cline{3-8}
                     &                     & H & 1264 & 374  & 227  & 155 & 96  \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline
-Version &
-  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
-  Numeric &
-  Alphanumeric &
-  Binary &
-  Kanji \\ \hline
 \multirow{4}{*}{13} & \multirow{4}{*}{ 69} & L & 3424 & 1022 & 619  & 425  & 262 \\ \cline{3-8}
                     &                      & M & 2672 & 796  & 483  & 331  & 204 \\ \cline{3-8}
                     &                      & Q & 1952 & 580  & 352  & 241  & 149 \\ \cline{3-8}
@@ -312,6 +313,21 @@ Version &
                     &                      & M & 4504 & 1346 & 816  & 560  & 345 \\ \cline{3-8}
                     &                      & Q & 3176 & 948  & 574  & 394  & 243 \\ \cline{3-8}
                     &                      & H & 2504 & 746  & 452  & 310  & 191 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
+\hline
+  Version &
+  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
+  Numeric &
+  \begin{tabular}[c]{@{}c@{}}Alpha-\\ numeric\end{tabular} &
+  Binary &
+  Kanji \\ \hline
 \multirow{4}{*}{19} & \multirow{4}{*}{ 93} & L & 6360 & 1903 & 1153 & 792  & 488 \\ \cline{3-8}
                     &                      & M & 5016 & 1500 & 909  & 624  & 384 \\ \cline{3-8}
                     &                      & Q & 3560 & 1063 & 644  & 442  & 272 \\ \cline{3-8}
@@ -336,21 +352,6 @@ Version &
                     &                      & M & 7312 & 2188 & 1326 & 911  & 561 \\ \cline{3-8}
                     &                      & Q & 5312 & 1588 & 963  & 661  & 407 \\ \cline{3-8}
                     &                      & H & 4112 & 1228 & 744  & 511  & 315 \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline
-Version &
-  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
-  Numeric &
-  Alphanumeric &
-  Binary &
-  Kanji \\ \hline
 \multirow{4}{*}{25} & \multirow{4}{*}{117} & L & 10208 & 3057 & 1853 & 1273 & 784  \\ \cline{3-8}
                     &                      & M & 8000  & 2395 & 1451 & 997  & 614  \\ \cline{3-8}
                     &                      & Q & 5744  & 1718 & 1041 & 715  & 440  \\ \cline{3-8}
@@ -363,6 +364,21 @@ Version &
                     &                      & M & 9024  & 2701 & 1637 & 1125 & 692  \\ \cline{3-8}
                     &                      & Q & 6464  & 1933 & 1172 & 805  & 496  \\ \cline{3-8}
                     &                      & H & 5024  & 1501 & 910  & 625  & 385  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
+\hline
+  Version &
+  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
+  Numeric &
+  \begin{tabular}[c]{@{}c@{}}Alpha-\\ numeric\end{tabular} &
+  Binary &
+  Kanji \\ \hline
 \multirow{4}{*}{28} & \multirow{4}{*}{129} & L & 12248 & 3669 & 2223 & 1528 & 940  \\ \cline{3-8}
                     &                      & M & 9544  & 2857 & 1732 & 1190 & 732  \\ \cline{3-8}
                     &                      & Q & 6968  & 2085 & 1263 & 868  & 534  \\ \cline{3-8}
@@ -404,14 +420,14 @@ Version &
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
 \hline
-Version &
-  \begin{tabular}[c]{@{}c@{}}Modules\\ (\{w\}×\{h\})\end{tabular} &
+  Version &
+  \begin{tabular}[c]{@{}c@{}}Modules\\ (w×h)\end{tabular} &
   \begin{tabular}[c]{@{}c@{}}ECC\\ Level\end{tabular} &
   \begin{tabular}[c]{@{}c@{}}Data bits\\ (mixed)\end{tabular} &
   Numeric &
-  Alphanumeric &
+  \begin{tabular}[c]{@{}c@{}}Alpha-\\ numeric\end{tabular} &
   Binary &
   Kanji \\ \hline
 \multirow{4}{*}{37} & \multirow{4}{*}{165} & L & 20528 & 6153 & 3729 & 2563 & 1577 \\ \cline{3-8}
