@@ -1,0 +1,10 @@
+app_name_proper: AllAboutQR.py
+app_name: allaboutqr
+copyright_holder: |-
+    Copyright © 2025 [whinee](https://github.com/whinee)
+synopsis: All about QR codes!
+description: All about QR codes!
+internals:
+    magic_str: c0VjUmVUX2NPZEUgYnkgd2hpX25l
+defaults:
+    language: en

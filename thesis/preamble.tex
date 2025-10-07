@@ -1,0 +1,56 @@
+\usepackage{graphicx} % used to add figures
+
+\usepackage{zref-clever} % smart cross referencing
+\usepackage{zref-xr} % external document cross referencing
+\usepackage{hyperref} % hyperlinks in document
+
+\usepackage{tabularray} % best table package available
+
+% math figures and symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{standalone} % This is great for writing figures in their own files but must be loaded before subfiles
+
+\usepackage[backend=biber,style=ieee]{biblatex} % sets up modern biblatex referencing
+
+\usepackage{subfiles} % keep this package last: allows for parent-child file with single preamble
+
+% Font Setup
+\usepackage{fontspec}       % custom fonts
+\usepackage{microtype}      % micro-typography (kerning, justification)
+\usepackage{ragged2e}       % better raggedright/justify
+\usepackage{setspace}       % line spacing control
+\usepackage[CJK]{ucharclasses}
+\usepackage{tablefootnote}
+
+\AtBeginEnvironment{tabular}{\fontsize{12}{14}\selectfont}
+
+\setmainfont[
+Path=fonts/,
+UprightFont = *-Regular,
+BoldFont    = *-Bold,
+ItalicFont  = *-RegularItalic,
+BoldItalicFont = *-BoldItalic,
+]{Manrope}
+\newfontfamily\ManropeBold[Path=fonts/]{Manrope-Bold.ttf}
+\newfontfamily\ManropeExtraBold[Path=fonts/]{Manrope-ExtraBold.ttf}
+\newfontfamily\ComicMono[Path=fonts/,Scale=0.9]{ComicMono.ttf}
+% \setmonofont[Path=fonts/,Scale=0.9]{ComicMono.ttf}
+\setmonofont[Path=fonts/]{CommitMono-700-Regular.otf}
+
+\newfontfamily\NotoSansRegular[Path=fonts/]{NotoSans-Regular.ttf}
+\newfontfamily\NotoSansJPRegular[Path=fonts/]{NotoSansJP-Regular.ttf}
+
+\setTransitionsForSymbols{\NotoSansRegular}{\Manrope}
+\setTransitionsForCJK{\NotoSansJPRegular}{\Manrope}
+
+\newcommand{\HUGETITLE}{\fontsize{3em}{4em}\selectfont\ManropeExtraBold}
+\newcommand{\HUGE}{\fontsize{2em}{3em}\selectfont\ManropeExtraBold}
+
+\let\oldfootnotesize\footnotesize
+\renewcommand{\footnotesize}{\normalsize}

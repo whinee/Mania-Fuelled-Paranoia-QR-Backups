@@ -4,6 +4,7 @@
 node_modules/
 squashfs-root/
 **/tmp/
+archive/
 
 # User-defined Ignored Files
 snapid.conf.json

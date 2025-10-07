@@ -1,56 +1,75 @@
 [project]
-name = "centennial_archival_project"
+name = "allaboutqr"
+license = "MIT"
 version = "0.1.0"
-description = "Add your description here"
-# readme = "docs/README.md"
+description = "None"
+readme = "docs/README.md"
 requires-python = ">=3.12"
 dependencies = [
     "alltheutils>=3.0.0",
+    "pillow>=11.2.1",
+    "qrcode>=8.2",
+    "reedsolo>=1.7.0",
     "openpyxl>=3.1.5",
 ]
+maintainers = [
+    { name = "whinyaan", email = "whinyaan@disroot.org" },
+]
+keywords = ["utility"]
+classifiers=[
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Utilities"
+]
+
+[project.urls]
+homepage = "https://python-poetry.org/"
+repository = "https://github.com/whinee/AllAboutQR"
+documentation = "https://github.com/whinee/AllAboutQR/tree/main/docs"
+"Bug Tracker" = "https://github.com/whinee/AllAboutQR/issues"
+
 
 [dependency-groups]
 dev = [
+    "alltheutils>=3.0.1",
+    "autopep8>=2.3.2",
     "black>=25.1.0",
+    "bs4>=0.0.2",
+    "erdantic>=1.1.0.post1",
     "mypy>=1.15.0",
+    "no-implicit-optional>=1.4",
+    "pdoc3>=0.11.5",
+    "pytest>=8.3.4",
+    "pytest-md-report>=0.7.0",
+    "python-minifier>=2.11.3",
     "rich>=13.9.4",
+    "ruamel-yaml>=0.18.10",
     "ruff>=0.9.6",
+    "scriptmerge>=3.1.0",
+    "stickytape>=0.2.1",
+    "translate-toolkit>=3.15.2",
 ]
 
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=64"]
 
-[tool.uv.sources]
-# alltheutils = { git = "https://github.com/whinee/alltheutils" }
-
-[tool.setuptools]
-packages = ["centennial_archival_project"]
+[tool.setuptools.packages.find]
+include = ["centennial_archival_project"]
 
 [tool.uv]
 default-groups = ["dev"]
 package = true
 
 [tool.mypy]
-disable_error_code = [
-    "import",
-    "annotation-unchecked",
-    "attr-defined",
-    "no-untyped-call",
-    "no-untyped-def",
-    "type-arg",
-    "unused-ignore",
-]
-strict = true
-exclude = "dev"
+disable_error_code = ["import", "attr-defined", "no-untyped-call"]
 
 [tool.ruff]
 line-length = 88
 
-target-version = "py310"
-
-[tool.ruff.lint.per-file-ignores]
-"playground/*" = [
-    "INP001",
-    "N999"
-]
+target-version = "py311"
 
 [tool.ruff.lint]
 select = [
@@ -102,7 +121,6 @@ ignore = [
     "ANN201",
     "ANN202",
     "ANN401",
-    "B008",
     "D100",
     "D101",
     "D102",
@@ -116,16 +134,13 @@ ignore = [
     "D205",
     "D212",
     "D401",
-    "D404",
     "D406",
     "D407",
     "D417",
     "E501",
-    "F722",
     "I002",
     "N812",
     "N818",
-    "Q000",
     "RET503",
     "S101",
     "UP007",
