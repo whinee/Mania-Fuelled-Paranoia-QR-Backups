@@ -1,0 +1,131 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global/global}
+  \entry{wikipedia-qr}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=cW}{%
+         family={contributors},
+         familyi={c\bibinitperiod},
+         given={Wikipedia},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{cW1}
+    \strng{fullhash}{cW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{QR code}}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/QR_code
+    \endverb
+    \field{month}{05}
+    \field{year}{2025}
+    \field{urlday}{06}
+    \field{urlmonth}{06}
+    \field{urlyear}{2025}
+  \endentry
+
+  \entry{mw-2d}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=MW}{%
+         family={Merriam-Webster},
+         familyi={M\bibinithyphendelim W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MW1}
+    \strng{fullhash}{MW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{2D}}
+    \verb{url}
+    \verb https://www.merriam-webster.com/dictionary/2D
+    \endverb
+    \field{urlday}{12}
+    \field{urlmonth}{06}
+    \field{urlyear}{2025}
+  \endentry
+
+  \entry{wikipedia-api}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=cW}{%
+         family={contributors},
+         familyi={c\bibinitperiod},
+         given={Wikipedia},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{cW1}
+    \strng{fullhash}{cW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{API}}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/API
+    \endverb
+    \field{month}{06}
+    \field{year}{2025}
+    \field{urlday}{12}
+    \field{urlmonth}{06}
+    \field{urlyear}{2025}
+  \endentry
+
+  \entry{wikipedia-ISO-8859-1}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=cW}{%
+         family={contributors},
+         familyi={c\bibinitperiod},
+         given={Wikipedia},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{cW1}
+    \strng{fullhash}{cW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{ISO/IEC 8859-1}}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+    \endverb
+    \field{month}{05}
+    \field{year}{2025}
+  \endentry
+
+  \entry{denso-wave-qr-versions}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=IDW}{%
+         family={INCORPORATED},
+         familyi={I\bibinitperiod},
+         given={DENSO\bibnamedelima WAVE},
+         giveni={D\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{IDW1}
+    \strng{fullhash}{IDW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{Information capacity and versions of QR Code}}
+    \verb{url}
+    \verb https://www.qrcode.com/en/about/version.html
+    \endverb
+    \field{urlday}{12}
+    \field{urlmonth}{06}
+    \field{urlyear}{2025}
+  \endentry
+\enddatalist
+\endinput

@@ -1,0 +1,127 @@
+\input{preamble.tex}
+
+\begin{titlepage}
+  \centering
+  \vspace*{\fill}
+
+  {\fontsize{2.75em}{3.5em}\selectfont\ManropeExtraBold Mania-Fuelled Paranoia: \par}
+  {\HUGE How to Survive the Apocalypse by Printing Your Sh*t in QR Codes \par}
+  {\Large Version 0.1.0 \par}
+  {\Large aka. Lyra Phasma \par}
+  {\Large June 5, 2025 \par}
+
+  \vspace*{\fill}
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Front Matter}
+
+\section{Document}
+
+The document has been purposely made to be grayscale due to the following reasons:
+
+\begin{enumerate}
+  \item Universality \& Accessibility
+    \begin{enumerate}[label=\alph*.]
+      \item To avoid issues for people with color blindness or visual impairments
+    \end{enumerate}
+  \item Legacy and Print-Friendliness
+    \begin{enumerate}[label=\alph*.]
+      \item This document is meant to be mass-printed
+      \item Sparse colors in the document would mean that this document would be needed to be printed in a color printer, which often times mean more expensive
+      \item Grayscale allows for photocopying while keeping clarity for the copies
+    \end{enumerate}
+  \item Neutrality
+    \begin{enumerate}[label=\alph*.]
+      \item Colors might be perceived as implying meaning or priority
+    \end{enumerate}
+\end{enumerate}
+
+\section{Authorship and Methodology}
+
+This document was prepared with the assistance of artificial intelligence (AI) tools, used primarily for drafting, structuring, and refining language. 
+
+All historical facts, interpretations, and arguments presented herein have been independently verified against primary or secondary sources. Every claim is supported with citations, and the work adheres to rigorous standards of documentation and cross-checking.
+
+The use of AI in authorship does not substitute for scholarly responsibility; rather, it served as an instrument to enhance clarity while ensuring that the content remains firmly grounded in verified evidence.
+
+\section{Academic and Professional Disclaimer}
+
+This document is not, by default, intended for formal academic or professional consumption. 
+It was written in a hybrid style that balances research discipline with personal reflection, 
+and in places it may appear unpolished, chaotic, or idiosyncratic by scholarly standards.  
+
+Certain sections draw directly from cited sources without paraphrasing. 
+This choice was made for personal archival clarity rather than to conform strictly to academic conventions.  
+While the author has verified the meaning and accuracy of all referenced material, 
+these passages should be treated with caution in formal contexts and paraphrased as appropriate.  
+
+If required, the author (writing under the pen name \emph{Lyra Phasma}) can prepare an academically conformant edition of this document, 
+including paraphrased references and standardized formatting.  
+Until such revisions are made, this text should be approached as a serious archival experiment 
+rather than a polished scholarly publication.
+
+\section{Notes for Future Reference}
+
+The author attempted to employ Simplified Technical English for clarity; however, full compliance has not been achieved. This is retained as a stylistic experiment rather than a strict technical requirement.
+
+\section{Personal Note}
+
+This document was first written in a burst of manic energy on June 2, 2025, and at many other restless moments besides.
+
+I keep this note here on purpose, as part of the archival character of the work, and as a reminder that every text carries the imprint of the state of mind in which it was made. 
+
+Behind these pages is simply a person who has been struggling for much of her life. I leave these words not only to record history, but also to be heard and, hopefully, understood. Thank you for reading, and for listening. I love you \texttt{:3}
+
+\section{License}
+
+Mania-Fuelled Paranoia: How to Survive the Apocalypse by Printing Your Sh*t in QR Codes © 2025 by aka. Lyra Phasma is licensed under Creative Commons Attribution-ShareAlike 4.0 International. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/
+
+% \setcounter{chapter}{0}
+% \renewcommand{\thechapter}{\arabic{chapter}}
+% \chapter{Front Matter}
+
+\chapter{Mathematics}
+
+\input{archive/math/main.tex}
+
+\chapter{QR Codes}
+
+\input{archive/qr/main.tex}
+
+
+\begin{lstlisting}[style=papercolor-light, language=Python, caption=Slay the print loop]
+#!/usr/bin/env python3
+class QRCode:
+    """
+    A QR Code symbol, which is a type of two-dimension barcode.
+
+    Invented by Denso Wave and described in the ISO/IEC 18004 standard. Instances of this class represent an immutable square grid of dark and light cells. The class provides static factory functions to create a QR Code from text or binary data. The class covers the QR Code Model 2 specification, supporting all versions (sizes) from 1 to 40, all 4 error correction levels, and 4 character encoding modes.
+
+    """
+\end{lstlisting}
+
+\chapter{Attributions}
+
+The fonts used in this project are the following:
+
+Sharanda M. (2018). \textit{Manrope} [Font]. Licensed under the SIL Open Font License, Version 1.1. Retrieved June 5, 2025, from https://fonts.google.com/specimen/Manrope.
+
+Miwa, S. (2018). \textit{Comic Mono} [Font]. Licensed under the MIT License. Retrieved June 5, 2025, from https://github.com/dtinth/comic-mono-font. Modified by dtinth (2019).
+
+The color themes used to color the code in this document are the following:
+
+Nguyen, N. (2015-2020). \textit{PaperColor} [Theme]. Licensed under the MIT License. Retrieved June 10, 2025, from https://github.com/NLKNguyen/papercolor-theme
+
+\printbibliography[heading=bibnumbered]
+
+\appendix
+% \chapter{The Document Itself}
+
+% Below is the source of the whole document itself, except for the fonts and images used in this document:
+
+% \lstinputlisting[style=papercolor-light, language={[LaTeX]TeX}]{main.tex}
+
+\printindex
+\end{document}

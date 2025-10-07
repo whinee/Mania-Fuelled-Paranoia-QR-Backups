@@ -1,0 +1,168 @@
+\documentclass[12pt,a4paper,english,twoside]{report}
+\usepackage[margin=1in,left=1.5in]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{hyperref} % Makes links clickable
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage{etoolbox}
+\usepackage{indentfirst}
+\usepackage{parskip}
+\usepackage{makeidx}
+\usepackage[compact]{titlesec}
+\usepackage{listings}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{calc}
+\usepackage{xstring}
+\usepackage{cellspace}
+\usepackage{tablefootnote}
+\usepackage{nameref}
+\usepackage[%
+  backend=bibtex      % biber or bibtex
+%,style=authoryear    % Alphabeticalsch
+ ,style=numeric-comp  % numerical-compressed
+ ,sorting=none        % no sorting
+ ,sortcites=true      % some other example options ...
+ ,block=none
+ ,indexing=false
+ ,citereset=none
+ ,isbn=true
+ ,url=true
+ ,doi=true            % prints doi
+ ,natbib=true         % if you need natbib functions
+ ,dateabbrev=false
+ ,alldates=long
+]{biblatex}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage[CJK]{ucharclasses}
+\usepackage{makeidx}
+\usepackage{setspace}
+
+\onehalfspacing
+
+\AtBeginEnvironment{tabular}{\fontsize{12}{14}\selectfont}
+
+\setmainfont[
+  Path=fonts/,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+  ItalicFont  = *-RegularItalic,
+  BoldItalicFont = *-BoldItalic,
+]{Manrope}
+\newfontfamily\ManropeBold[Path=fonts/]{Manrope-Bold.ttf}
+\newfontfamily\ManropeExtraBold[Path=fonts/]{Manrope-ExtraBold.ttf}
+\newfontfamily\ComicMono[Path=fonts/,Scale=0.9]{ComicMono.ttf}
+% \setmonofont[Path=fonts/,Scale=0.9]{ComicMono.ttf}
+\setmonofont[Path=fonts/]{CommitMono-700-Regular.otf}
+
+\newfontfamily\NotoSansRegular[Path=fonts/]{NotoSans-Regular.ttf}
+\newfontfamily\NotoSansJPRegular[Path=fonts/]{NotoSansJP-Regular.ttf}
+
+\setTransitionsForSymbols{\NotoSansRegular}{\Manrope}
+\setTransitionsForCJK{\NotoSansJPRegular}{\Manrope}
+
+\newcommand{\HUGETITLE}{\fontsize{3em}{4em}\selectfont\ManropeExtraBold}
+\newcommand{\HUGE}{\fontsize{2em}{3em}\selectfont\ManropeExtraBold}
+
+\let\oldfootnotesize\footnotesize
+\renewcommand{\footnotesize}{\normalsize}
+
+% \captionsetup[longtable]{skip=0.5em}
+
+\makeindex
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{4}
+
+\title{Mania-Fuelled Paranoia: How to Survive the Apocalypse by Printing Your Sh*t in QR Codes v0.1.0}
+\author{a.k.a Lyra Phasma}
+\date{June 5, 2025}
+
+\newcommand{\wiki}[2][]{%
+  \IfStrEq{#1}{}{
+    \href{https://en.wikipedia.org/wiki/#2}{#2}%
+  }{
+    \href{https://en.wikipedia.org/wiki/#2}{#1}%
+  }%
+}
+
+\newcommand{\wikitablefootnote}[3]{%
+  \wiki[{\detokenize{#1}}]{#2}\tablefootnote{\wiki[{\detokenize{#3}}]{#2}\label{#3}}%
+}
+
+\hyphenpenalty=9999
+\exhyphenpenalty=10000
+\sloppy
+\setlength{\emergencystretch}{4em}
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
+\setlength{\cellspacetoplimit}{3pt}
+\setlength{\cellspacebottomlimit}{0pt}
+\renewcommand{\arraystretch}{1.2}
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{-0.5em}{\Huge}
+\titlespacing*{\chapter}
+  {0pt}    % left margin
+  {-5em}    % space before
+  {-0.5em}    % space after
+\setlist[enumerate,1]{left=0em, itemsep=-10pt, topsep=0pt}
+\setlist[enumerate]{left=0em, itemsep=-10pt, topsep=-10pt}
+\setlist[itemize]{left=0em, itemsep=-10pt, topsep=-10pt, parsep=-10pt}
+
+\makeatletter
+% \patchcmd{\chapter}{\clearpage}{}{}{}
+% \patchcmd{\chapter}{\cleardoublepage}{}{}{}
+\patchcmd{\section}{\@afterindentfalse}{\@afterindenttrue}{}{}
+\patchcmd{\subsection}{\@afterindentfalse}{\@afterindenttrue}{}{}
+\patchcmd{\subsubsection}{\@afterindentfalse}{\@afterindenttrue}{}{}
+\makeatother
+
+\renewcommand{\contentsname}{Table of Contents}
+
+\definecolor{papercolor-light-bg}{HTML}{ffffff}
+\definecolor{papercolor-light-fg}{HTML}{282A36}
+\definecolor{papercolor-light-purple}{HTML}{8700af}
+\definecolor{papercolor-light-cyan}{HTML}{0087af}
+\definecolor{papercolor-light-green}{HTML}{008700}
+\definecolor{papercolor-light-orange}{HTML}{d75f00}
+\definecolor{papercolor-light-pink}{HTML}{d70087}
+\definecolor{papercolor-light-red}{HTML}{af0000}
+\definecolor{papercolor-light-comment}{HTML}{444444}
+
+\lstdefinestyle{papercolor-light}{
+    backgroundcolor=\color{papercolor-light-bg},
+    basicstyle=\ttfamily\small\color{papercolor-light-fg},
+    keywordstyle=\color{papercolor-light-pink}\bfseries,
+    commentstyle=\color{papercolor-light-comment}\itshape,
+    stringstyle=\color{papercolor-light-green},
+    numberstyle=\tiny\color{papercolor-light-purple},
+    identifierstyle=\color{papercolor-light-fg},
+    showstringspaces=false,
+    numbers=left,
+    numbersep=10pt,
+    frame=single,
+    rulecolor=\color{papercolor-light-purple},
+    breaklines=true,
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false
+}
+
+\addbibresource{refs.bib}
+
+\DefineBibliographyStrings{english}{
+  urlseen = {Retrieved},
+}
+
+\begin{document}
+\DeclareDatamodelFields[type=field,datatype=date]{eventdate}
+\DeclareDatamodelFields[type=field,datatype=date]{urldate}
