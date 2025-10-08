@@ -1,4 +1,65 @@
-\input{header.tex}
+% !TeX program = pdflatex
+% This command controls the TeX engine you use: 
+%				pdfLaTeX		-	Standard and fastest engine, but limited support for modern and unicode fonts.
+%				XeLaTeX			-	Supports modern and unicode font.
+%				LuaLaTeX		-	Most modern engine, slowest but supports all fonts and languages, additionally allows Lua code
+% It is reccomended to stick to pdfLaTeX unless you really need to switch.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thesis template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Version 1.1.2 by G. H. Allison
+
+% This is an accessibility command that allow the document to auto tag.
+% Delete this if it is causing problems
+% If you are using Overleaf this will cause problems
+\DocumentMetadata{
+	lang        = en,
+	pdfversion  = 2.0,
+	pdfstandard = ua-2,
+	pdfstandard = a-4f, %or a-4
+	testphase   = 
+	{phase-III,
+		title,
+		table,
+		math,
+		firstaid}  
+}
+
+% How to use this template:
+% Everywhere you will need to edit is marked with XXXXXX in a comment, these comments also tell you 
+% what needs to go where. Do not touch anything that is not commented if you do not understand it
+
+% A note on fonts:
+% When you install latex it will default to using pdflatex as the compiler. This dosn't support custom fonts. If you wish to use them, you must set the compiler to either XeLaTeX or LuaLaTeX.
+
+\RequirePackage{fix-cm}		% This provides font scaling for computer modern. The default LaTeX font. Comment this out if you are using another font.
+
+\documentclass[12pt]{guidethesis} % tell the compiler to use the template
+
+% XXXXXX load any additional packages, don't worry too much about this now, as you go along you will likely need to use some special packages for particular problems like full page tables etc.. This is where you tell the compiler what packages it should load before it tried to build your document.
+
+\input{preamble.tex} % provides preamble
+
+\ifSubfilesClassLoaded{%
+	\addbibresource{\subfix{refs.bib}}
+}{%
+	\addbibresource{refs.bib}
+} % fixes bibliography so it works with subfiles.
+
+%input macros (i.e. write your own macros file called mymacros.tex 
+%and uncomment the next line)
+%\include{mymacros}
+
+\baselineskip=18pt plus1pt
+
+%set the number of sectioning levels that get number and appear in the contents
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\title{Remember, Record, Resist:}     %note \\[1ex] is a line break in the title for nicer spacing if you wish to force it.
+
+% Otherwise the title should wrap and adjust size automatically.
+% If your title still overruns you should probably consider a shorter title
 
 \begin{titlepage}
   \centering

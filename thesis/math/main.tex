@@ -1,0 +1,58 @@
+\documentclass[../thesis-main]{subfiles}
+
+\begin{document}
+
+\chapter{Mathematics}
+
+\section{Set Theory}
+
+$\{\, x : x \in \mathbb{R} \mid x > 0 \,\}$ is the set of all strictly positive real numbers.
+
+$S$ = letters of the alphabet.
+
+$|S| = 26$
+
+\textbf{Power of Sets}
+
+\begin{align*}
+S &= \{a, b, c\} \\
+\mathcal{P}(S) &= \{\varnothing, \{a\}, \{b\}, \{c\}, \{a,b\}, \{a,c\}, \{b,c\}, \{a,b,c\}\}
+\end{align*}
+
+Let $A = \{1, 2, 3\}$ and $B = \{3, 4, 5\}$:
+
+\begin{align*}
+    \text{Union: } & A \cup B = \{1, 2, 3, 4, 5\} \\
+    \text{Intersection: } & A \cap B = \{3\} \\
+    \text{Complement: } & A \setminus B = \{1, 2\} \\
+    \text{Symmetric Difference: } & A \,\triangle\, B = \{1, 2, 4, 5\}
+\end{align*}
+
+\begin{description}[leftmargin=!,align=right,labelwidth=11em]
+  \item[Union] $A \cup B = \{1, 2, 3, 4, 5\}$
+  \item[Intersection] $A \cap B = \{3\}$
+  \item[Complement] $A \setminus B = \{1, 2\}$
+  \item[Symmetric Difference] $A \,\triangle\, B = \{1, 2, 4, 5\}$
+\end{description}
+
+\textbf{Cartesian products}
+
+\[
+A \times B = \{(1,3), (1,4), (2,3), (2,4)\}
+\]
+
+\[
+B \times A = \{(3,1), (3,2), (4,1), (4,2)\}
+\]
+
+\[
+A \times B \neq B \times A
+\]
+
+\newpage
+
+\section{Discrete Mathematics}
+
+\input{math/discrete.tex}
+
+\end{document}

@@ -1,57 +1,79 @@
 {
-  "latex-workshop.latex.tools": [
-    {
-      "name": "build",
-      "command": "./build.sh",
-      "args": ["%DOC%"]
-    }
-  ],
-  "latex-workshop.latex.recipes": [
-    {
-      "name": "mermaid+latexmk",
-      "tools": ["build"]
-    }
-  ],
-  "latex-workshop.latex.watch.exclude": [
-    "figures/**"
-  ],
-    // Treat new files (before first save) as LaTeX files.
-  "files.defaultLanguage": "latex",
-  // Treat LaTeX package (.sty) and class (.cls) files as LaTeX files.
-  "files.associations": {
-      "*.sty": "latex",
-      "*.cls": "latex"
-  },
-  // Hide the following file types from the VS Code folder list.
-  "files.exclude": {
-      "**/*.4ct": true,
-      "**/*.4tc": true,
-      "**/*.fdb_latexmk": true,
-      "**/*.idv": true,
-      "**/*.lg": true,
-      "**/*.lof": true,
-      "**/*.synctex.gz": true,
-      "**/*.synctex(busy)": true,
-      "**/*.tmp": true,
-      "**/*.xref": true,
-      "**/*.fls": true,
-      "**/*.loc": true,
-      "**/*.run.xml": true,
-      "**/*.soc": true,
-      "**/*.snm": true,
-      "**/*.blg": true,
-      "**/*-SAVE-ERROR": true,
-      "**/*.ind": true,
-      "**/*.aux": true,
-      "**/*.bbl": true,
-      "**/*-blx.bib": true,
-      "**/*.idx": true,
-      "**/*.ilg": true,
-      "**/*.log": true,
-      "**/*.out": true,
-      "**/*.toc": true,
-      "**/*.lot": true,
-      "**/*.bcf": true,
-      "**/*.xdv": true
-  },
+//   "latex-workshop.latex.tools": [
+//     {
+//       "name": "build",
+//       "command": "./build.sh",
+//       "args": ["%DOC%"]
+//     }
+//   ],
+//   "latex-workshop.latex.recipes": [
+//     {
+//       "name": "mermaid+latexmk",
+//       "tools": ["build"]
+//     }
+//   ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-bibtex",
+                "%DOC%"
+            ]
+        },
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.watch.exclude": [
+        "figures/**"
+    ],
+        // Treat new files (before first save) as LaTeX files.
+    "files.defaultLanguage": "latex",
+    // Treat LaTeX package (.sty) and class (.cls) files as LaTeX files.
+    "files.associations": {
+        "*.sty": "latex",
+        "*.cls": "latex"
+    },
+    // Hide the following file types from the VS Code folder list.
+    "files.exclude": {
+        "**/*.4ct": true,
+        "**/*.4tc": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.idv": true,
+        "**/*.lg": true,
+        "**/*.lof": true,
+        "**/*.synctex.gz": true,
+        "**/*.synctex(busy)": true,
+        "**/*.tmp": true,
+        "**/*.xref": true,
+        "**/*.fls": true,
+        "**/*.loc": true,
+        "**/*.run.xml": true,
+        "**/*.soc": true,
+        "**/*.snm": true,
+        //   "**/*.blg": true,
+        "**/*-SAVE-ERROR": true,
+        "**/*.ind": true,
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*-blx.bib": true,
+        "**/*.idx": true,
+        "**/*.ilg": true,
+        //   "**/*.log": true,
+        "**/*.out": true,
+        "**/*.toc": true,
+        "**/*.lot": true,
+        "**/*.bcf": true,
+        "**/*.xdv": true
+    },
 }
