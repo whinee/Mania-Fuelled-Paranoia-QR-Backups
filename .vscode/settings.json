@@ -12,25 +12,24 @@
 //       "tools": ["build"]
 //     }
 //   ],
+    "latex-workshop.latex.rootFile.useSubFile": true,
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex (subfiles ok)",
+            "tools": ["xelatex"]
+        }
+    ],
     "latex-workshop.latex.tools": [
         {
-            "name": "latexmk",
-            "command": "latexmk",
+            "name": "xelatex",
+            "command": "xelatex",
             "args": [
-                "-xelatex",
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "-bibtex",
+                "-output-directory=%DIR%",
                 "%DOC%"
-            ]
-        },
-    ],
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "latexmk",
-            "tools": [
-                "latexmk"
             ]
         }
     ],
@@ -76,4 +75,5 @@
         "**/*.bcf": true,
         "**/*.xdv": true
     },
+    "latex-workshop.view.outline.sync.viewer": true,
 }

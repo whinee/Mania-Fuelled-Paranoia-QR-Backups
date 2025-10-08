@@ -5,7 +5,7 @@
 %-------------------------- initial code -----------------------
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
-\LoadClass[a4paper,english,twoside,openright]{report}
+\LoadClass[a4paper,twoside,openright]{report}
 % As an alternative to the above could use next line for twosided output
 %\LoadClass[a4paper,twoside,openright]{report}
 
@@ -193,19 +193,19 @@
             \setlength{\baselineskip}{1ex}
             \@title
             \par
-            \vspace{0.5em}
+            \vspace{0.25em}
             {\large\selectfont\@subtitle}
         }
         } \par}
       \vfill
-      \vspace*{10mm} % Minimum space after logo
-      {{\Large \@author} \par \vspace*{10mm}}
-      {{\large \@super} \par {\large \@supervisors} \par \vspace*{15mm}}
+      \vspace*{5mm} % Minimum space after logo
+      {{\Large \@author} \par \vspace*{5mm}}
+      {{\large \@super} \par {\large \@supervisors} \par \vspace*{10mm}}
       {{\submittedtext} \par} \vspace*{1ex}
-      {\it {\@award} \par} \vspace*{15mm}	
+      {\it {\@award} \par} \vspace*{10mm}	
       {\@uniname \par} \vspace*{1ex}
       {\@faculty \par} \vspace*{1ex}
-      {\@school \par}\vspace*{15mm}
+      {\@school \par}\vspace*{10mm}
     {Submission\space Date \par}\vspace*{1ex}
     {\@degreedate \par}
   \end{center}
@@ -223,10 +223,12 @@
   \begin{center}
   \vspace*{1.5cm}
   {\LARGE }
-  \end{center}
-  \vspace{0.5cm}
-  \begin{verse}\begin{center}}
-{\end{center}\end{verse}\end{alwayssingle}}
+  \vspace{0.5cm}\par
+  \begin{minipage}{0.8\textwidth}
+  \centering
+  \normalfont\itshape
+}
+{\end{minipage}\end{center}\end{alwayssingle}}
 
 
 % ACKNOWLEDGEMENTS

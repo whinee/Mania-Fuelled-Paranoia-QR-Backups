@@ -28,28 +28,6 @@
 
 \AtBeginEnvironment{tabular}{\fontsize{12}{14}\selectfont}
 
-\setmainfont[
-Path=fonts/,
-UprightFont = *-Regular,
-BoldFont    = *-Bold,
-ItalicFont  = *-RegularItalic,
-BoldItalicFont = *-BoldItalic,
-]{Manrope}
-\newfontfamily\ManropeBold[Path=fonts/]{Manrope-Bold.ttf}
-\newfontfamily\ManropeExtraBold[Path=fonts/]{Manrope-ExtraBold.ttf}
-\newfontfamily\ComicMono[Path=fonts/,Scale=0.9]{ComicMono.ttf}
-% \setmonofont[Path=fonts/,Scale=0.9]{ComicMono.ttf}
-\setmonofont[Path=fonts/]{CommitMono-700-Regular.otf}
-
-\newfontfamily\NotoSansRegular[Path=fonts/]{NotoSans-Regular.ttf}
-\newfontfamily\NotoSansJPRegular[Path=fonts/]{NotoSansJP-Regular.ttf}
-
-\setTransitionsForSymbols{\NotoSansRegular}{\Manrope}
-\setTransitionsForCJK{\NotoSansJPRegular}{\Manrope}
-
-\newcommand{\HUGETITLE}{\fontsize{3em}{4em}\selectfont\ManropeExtraBold}
-\newcommand{\HUGE}{\fontsize{2em}{3em}\selectfont\ManropeExtraBold}
-
 \let\oldfootnotesize\footnotesize
 \renewcommand{\footnotesize}{\normalsize}
 

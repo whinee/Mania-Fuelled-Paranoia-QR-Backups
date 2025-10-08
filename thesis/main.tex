@@ -40,11 +40,44 @@
 
 \input{preamble.tex} % provides preamble
 
+\ifSubfilesClassLoaded{
+  \edef\FontPath{\subfix{fonts/}}
+}{
+  \def\FontPath{fonts/}
+}
+
 \ifSubfilesClassLoaded{%
 	\addbibresource{\subfix{refs.bib}}
 }{%
 	\addbibresource{refs.bib}
 } % fixes bibliography so it works with subfiles.
+
+% --- Main font setup ---
+\setmainfont[
+  Path=\FontPath,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+  ItalicFont  = *-RegularItalic,
+  BoldItalicFont = *-BoldItalic,
+]{Manrope}
+
+% --- Additional fonts ---
+\newfontfamily\Manrope[Path=\FontPath]{Manrope-Regular.ttf}
+\newfontfamily\ManropeBold[Path=\FontPath]{Manrope-Bold.ttf}
+\newfontfamily\ManropeExtraBold[Path=\FontPath]{Manrope-ExtraBold.ttf}
+\newfontfamily\ComicMono[Path=\FontPath,Scale=0.9]{ComicMono.ttf}
+\setmonofont[Path=\FontPath]{CommitMono-700-Regular.otf}
+
+\newfontfamily\NotoSansRegular[Path=\FontPath]{NotoSans-Regular.ttf}
+\newfontfamily\NotoSansJPRegular[Path=\FontPath]{NotoSansJP-Regular.ttf}
+
+% --- Symbol/CJK transitions ---
+\setTransitionsForSymbols{\NotoSansRegular}{\Manrope}
+\setTransitionsForCJK{\NotoSansJPRegular}{\Manrope}
+
+% --- Title commands ---
+\newcommand{\HUGETITLE}{\fontsize{3em}{4em}\selectfont\ManropeExtraBold}
+\newcommand{\HUGE}{\fontsize{2em}{3em}\selectfont\ManropeExtraBold}
 
 %input macros (i.e. write your own macros file called mymacros.tex 
 %and uncomment the next line)
@@ -101,8 +134,8 @@
 %XXXXXX when the compiler hits an \include{file_name} or \subfile{file_name} command it switches to that file goes all the way through it and comes back to this one. When you are working on single chapters you can comment out the other chapters so the document builds faster
 
 \subfile{dedication}        % include the dedication.tex file
-\subfile{acknowlegements}   % include the acknowledgements.tex file
-\subfile{abstract}          % include the abstract.tex
+% \subfile{acknowlegements}   % include the acknowledgements.tex file
+% \subfile{abstract}          % include the abstract.tex
 
 \begin{romanpages}          % start roman page numbering
 \tableofcontents            % generate and include a table of contents
@@ -110,12 +143,13 @@
 \listoftables				% generate and include a list of tables
 \end{romanpages}            % end roman page numbering
 
-
 %XXXXXXXnow include the files of latex for each of the etc
 % \subfile{chp1/doc1}
 % \subfile{chp2/doc2}
 
 \subfile{math/main}
+
+\subfile{qr/main}
 
 \subfile{conclusions}
 
@@ -123,7 +157,5 @@
 
 %now enable appendix numbering format and include any appendices
 \appendix
-\subfile{appendix1} %XXXXXX The same as the above but for appendicies
-\subfile{appendix2}
 
 \end{document}
