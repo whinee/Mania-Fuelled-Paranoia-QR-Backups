@@ -23,7 +23,8 @@ def make_table(sheet, row_start, row_end, col_start, col_end):
 
     # caption
     out.append("\\begin{table}[H]")
-    out.append("\centering")
+    out.append("\\Fontified")
+    out.append("\\centering")
     out.append(
         f"\\caption{{Shift JIS X 0208: {to_hex(row_start)}-{to_hex(row_end)} x {to_hex(col_start)}-{to_hex(col_end)}}}",
     )
@@ -55,15 +56,15 @@ def main():
     #     print("Usage: python3 jis_excel_to_latex.py jis.xlsx")
     #     return
 
-    wb = load_workbook('data/JIS x 0208.xlsx')
-    sheet = wb['without rows and columns']  # assume grid is in the first sheet
+    wb = load_workbook("data/jis_x_0208_table.xlsx")
+    sheet = wb.active  # assume grid is in the first sheet
 
-    ROWS, COLS = END_CODE - START_CODE + 1, END_CODE - START_CODE + 1
+    rows, cols = END_CODE - START_CODE + 1, END_CODE - START_CODE + 1
 
-    for row_start in range(0, ROWS, ROW_BLOCK):
-        for col_start in range(0, COLS, COL_BLOCK):
-            row_end = min(row_start + ROW_BLOCK - 1, ROWS - 1)
-            col_end = min(col_start + COL_BLOCK - 1, COLS - 1)
+    for row_start in range(1, rows, ROW_BLOCK):
+        for col_start in range(1, cols, COL_BLOCK):
+            row_end = min(row_start + ROW_BLOCK - 1, rows - 1)
+            col_end = min(col_start + COL_BLOCK - 1, cols - 1)
             print(make_table(sheet, row_start, row_end, col_start, col_end))
 
 if __name__ == "__main__":

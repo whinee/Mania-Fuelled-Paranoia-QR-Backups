@@ -36,7 +36,7 @@
     "latex-workshop.latex.watch.exclude": [
         "figures/**"
     ],
-        // Treat new files (before first save) as LaTeX files.
+    // Treat new files (before first save) as LaTeX files.
     "files.defaultLanguage": "latex",
     // Treat LaTeX package (.sty) and class (.cls) files as LaTeX files.
     "files.associations": {
