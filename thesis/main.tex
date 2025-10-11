@@ -74,6 +74,7 @@
 \newfontfamily\LastResort[Path=\FontPath]{LastResort-Regular.ttf}
 \newfontfamily\Fontified[Path=\FontPath]{Fontified.ttf}
 
+
 % --- Symbol/CJK transitions ---
 % \setDefaultTransitions{\Unifont}{\Unifont}
 % \setTransitionsForSymbols{\LastResort}{\normalfont}
@@ -138,19 +139,26 @@
 
 %XXXXXX when the compiler hits an \include{file_name} or \subfile{file_name} command it switches to that file goes all the way through it and comes back to this one. When you are working on single chapters you can comment out the other chapters so the document builds faster
 
-\subfile{dedication}        % include the dedication.tex file
-% \subfile{acknowlegements}   % include the acknowledgements.tex file
-% \subfile{abstract}          % include the abstract.tex
-
 \begin{romanpages}          % start roman page numbering
+\subfile{statement_of_originality}        % include the statement_of_originality.tex file
+\subfile{dedication}        % include the dedication.tex file
+\subfile{acknowlegements}   % include the acknowledgements.tex file
+\subfile{abstract}          % include the abstract.tex
 \tableofcontents            % generate and include a table of contents
 \listoffigures              % generate and include a list of figures
 \listoftables				% generate and include a list of tables
+\subfile{preface}        % include the preface.tex file
 \end{romanpages}            % end roman page numbering
 
 %XXXXXXXnow include the files of latex for each of the etc
 % \subfile{chp1/doc1}
 % \subfile{chp2/doc2}
+
+\appendix
+% \part*{Appendix: Corpus of Arcane Texts}
+% \addcontentsline{toc}{part}{Appendix: Corpus of Arcane Texts}
+% \setcounter{chapter}{0}
+% \renewcommand{\thechapter}{\arabic{chapter}}
 
 \subfile{math/main}
 

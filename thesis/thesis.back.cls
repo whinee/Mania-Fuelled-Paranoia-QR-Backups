@@ -1,10 +1,20 @@
 % DO NOT CHANGE THIS CODE UNLESS YOU KNOW WHAT YOU'RE DOING!
 %-------------------------- identification ---------------------}
-\NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{thesis}[2024/11/06 v1.2.1 Guide Thesis class]
 % Class Produced by George H. Allison to be more inline with LaTeX3 and work with subfiles.
 %-------------------------- initial code -----------------------
-\LoadClass{base}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\ProcessOptions\relax
+\LoadClass[a4paper,twoside,openright]{report}
+% As an alternative to the above could use next line for twosided output
+%\LoadClass[a4paper,twoside,openright]{report}
+
+\RequirePackage{graphicx} % needed for latest frontpage logo
+\RequirePackage{tikz}
+\RequirePackage{expl3}
+\RequirePackage{xparse}
+
+\raggedbottom
 
 %define the default submitted text
 \newcommand{\submittedtext}{{A thesis submitted in partial fulfilment of the requirements for the degree of}}
@@ -140,12 +150,31 @@
         }
 }
 
+
+
+%
+% Define text area of page and margin offsets
+%
+\setlength{\topmargin}{0.0in}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{9.0in}
+\setlength{\textwidth}{6.0in}
+
 %
 % Environments
 %
 
 % This macro define an environment for front matter that is always 
 % single column even in a double-column document.
+
+\newenvironment{alwayssingle}{%
+        \@restonecolfalse
+        \if@twocolumn\@restonecoltrue\onecolumn
+        \else\if@openright\cleardoublepage\else\clearpage\fi
+        \fi}%
+        {\if@restonecol\twocolumn\fi
+        \newpage\thispagestyle{empty}}
 
 %define title page layout
 \renewcommand{\maketitle}{%

@@ -1,6 +1,26 @@
+## Resources
+
+### Tools
+
+https://pandoc.org/try
+
+https://tableconvert.com/latex-generator
+
+https://www.tablesgenerator.com/
+
+### Knowledge
+
+https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=4E01
+
 https://www.canada.ca/en/conservation-institute/services/conservation-preservation-publications/canadian-conservation-institute-notes.html
 
-https://geekboxph.com/products/bcw-9x12-inches-photo-print-sleeves
+https://en.wikiversity.org/wiki/Reed%E2%80%93Solomon_codes_for_coders
+
+https://www.thonky.com/qr-code-tutorial/module-placement-matrix
+
+### Thesis Writing
+
+https://science.upd.edu.ph/wp-content/uploads/2022/03/Style-and-Format-Manual_Revised-September-2021.pdf
 
 ## Materials
 

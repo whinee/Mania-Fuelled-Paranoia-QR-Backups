@@ -52,6 +52,9 @@ bootstrap:
     . .\.venv\Scripts\Activate.ps1
     uv sync
 
+jis_x_0208_to_tex:
+    python scripts/jis_x_0208_to_tex.py >| thesis/qr/shift_jis_x_0208.tex
+
 bundle:
     scriptmerge compilepy -c -o backup.py allaboutqr/backup.py
     pyminify -i --remove-literal-statements --rename-globals --remove-debug --remove-class-attribute-annotations backup.py
@@ -80,8 +83,6 @@ docs:
     mkdir -p "$TARGET_DIR"
     cp -r "$TMPDIR/{{app_id}}"/* "$TARGET_DIR"
     rm -rf "$TMPDIR"
-
-    erdantic alltheutils.cli.dataclasses.CLIConfig --dot | dot -Tpng -Gdpi=300 -o "{{dev_docs}}/cli/dataclasses.png"
 
     mkdir -p "$TARGET_DIR/dev"
     cp -r "{{dev_docs}}"/* "$TARGET_DIR/dev"
