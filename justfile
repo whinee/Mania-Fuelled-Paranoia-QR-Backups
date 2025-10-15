@@ -52,6 +52,12 @@ bootstrap:
     . .\.venv\Scripts\Activate.ps1
     uv sync
 
+tex_build:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd thesis
+    latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex -shell-escape main
+
 jis_x_0208_to_tex:
     python scripts/jis_x_0208_to_tex.py >| thesis/qr/shift_jis_x_0208.tex
 
