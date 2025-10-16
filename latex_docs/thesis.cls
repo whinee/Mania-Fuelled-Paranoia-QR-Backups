@@ -165,7 +165,7 @@
                 \@title
                 \par
                 \vspace{0.25em}
-                {\large\selectfont\@subtitle}
+                {\Large\selectfont\@subtitle}
             }
             } \par}
         \vfill

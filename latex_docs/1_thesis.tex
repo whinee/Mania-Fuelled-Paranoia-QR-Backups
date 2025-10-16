@@ -140,25 +140,25 @@
 %XXXXXX when the compiler hits an \include{file_name} or \subfile{file_name} command it switches to that file goes all the way through it and comes back to this one. When you are working on single chapters you can comment out the other chapters so the document builds faster
 
 \begin{romanpages}          % start roman page numbering
-\subfile{statement_of_originality}        % include the statement_of_originality.tex file
-\subfile{dedication}        % include the dedication.tex file
-\subfile{acknowlegements}   % include the acknowledgements.tex file
-\subfile{abstract}          % include the abstract.tex
+\subfile{1_thesis/statement_of_originality}        % include the statement_of_originality.tex file
+\subfile{1_thesis/dedication}        % include the dedication.tex file
+\subfile{1_thesis/acknowlegements}   % include the acknowledgements.tex file
+\subfile{1_thesis/abstract}          % include the abstract.tex
 \tableofcontents            % generate and include a table of contents
 \listoffigures              % generate and include a list of figures
 \listoftables				% generate and include a list of tables
-\subfile{preface}        % include the preface.tex file
+\subfile{1_thesis/preface}        % include the preface.tex file
 \end{romanpages}            % end roman page numbering
 
 %XXXXXXXnow include the files of latex for each of the etc
 % \subfile{chp1/doc1}
 % \subfile{chp2/doc2}
 
-\subfile{chapters/1_introduction}
+\subfile{1_thesis/chapters/1_introduction}
 
-\subfile{chapters/2_rrl}
+\subfile{1_thesis/chapters/2_rrl}
 
-\subfile{chapters/3_methodology}
+\subfile{1_thesis/chapters/3_methodology}
 
 \appendix
 % \part*{Appendix: Corpus of Arcane Texts}
@@ -166,11 +166,11 @@
 % \setcounter{chapter}{0}
 % \renewcommand{\thechapter}{\arabic{chapter}}
 
-\subfile{math/main}
+% \subfile{math/main}
 
-\subfile{qr/main}
+% \subfile{qr/main}
 
-\subfile{conclusions}
+% \subfile{conclusions}
 
 \printbibliography
 

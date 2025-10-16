@@ -2,7 +2,7 @@
 \ProvidesClass{base}[2025/10/08 Base class for thesis and documents]
 
 \ProcessOptions\relax
-\LoadClass[a4paper,twoside,openright]{report}
+\LoadClass[a4paper,twoside,openleft]{report}
 
 % --- Shared packages ---
 \RequirePackage{graphicx}
@@ -17,7 +17,7 @@
 %
 \setlength{\topmargin}{0.0in}
 \setlength{\oddsidemargin}{0in}
-\setlength{\evensidemargin}{0.5in}
+\setlength{\evensidemargin}{0in}
 \setlength{\textheight}{9.0in}
 \setlength{\textwidth}{6.0in}
 
@@ -31,7 +31,7 @@
 
 \newenvironment{alwayssingle}{%
   \if@twocolumn\onecolumn\fi
-  \clearpage\thispagestyle{empty}
+  \cleardoublepage\thispagestyle{empty}
 }{\newpage}
 
 \ExplSyntaxOff
