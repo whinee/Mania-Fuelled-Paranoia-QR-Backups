@@ -15,4 +15,4 @@ TEXFILE="$1"
 # done
 
 # Run LaTeX build
-latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error "$TEXFILE"
+latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex "$TEXFILE"
