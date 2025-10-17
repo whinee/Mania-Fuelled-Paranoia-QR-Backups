@@ -22,6 +22,8 @@ https://www.thonky.com/qr-code-tutorial/module-placement-matrix
 
 https://science.upd.edu.ph/wp-content/uploads/2022/03/Style-and-Format-Manual_Revised-September-2021.pdf
 
+https://www.studocu.com/ph/document/philippine-normal-university/practical-research/the-quantitative-research-paper-example/27308428
+
 ## Materials
 
 Printer: Epson L120
