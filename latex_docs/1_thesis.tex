@@ -135,14 +135,13 @@
 %this baselineskip gives sufficient line spacing for an examiner to easily
 %markup the thesis with comments
 
-\maketitle                  % create a title page from the preamble info
-
 %XXXXXX when the compiler hits an \include{file_name} or \subfile{file_name} command it switches to that file goes all the way through it and comes back to this one. When you are working on single chapters you can comment out the other chapters so the document builds faster
 
 \begin{romanpages}          % start roman page numbering
+\maketitle                  % create a title page from the preamble info
 \subfile{1_thesis/statement_of_originality}        % include the statement_of_originality.tex file
 \subfile{1_thesis/dedication}        % include the dedication.tex file
-\subfile{1_thesis/acknowlegements}   % include the acknowledgements.tex file
+\subfile{1_thesis/acknowledgements}   % include the acknowledgements.tex file
 \subfile{1_thesis/abstract}          % include the abstract.tex
 \tableofcontents            % generate and include a table of contents
 \listoffigures              % generate and include a list of figures

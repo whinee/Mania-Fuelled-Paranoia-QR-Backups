@@ -24,6 +24,10 @@ https://science.upd.edu.ph/wp-content/uploads/2022/03/Style-and-Format-Manual_Re
 
 https://www.studocu.com/ph/document/philippine-normal-university/practical-research/the-quantitative-research-paper-example/27308428
 
+https://www.scribd.com/presentation/655248817/Seminar-Presentation-for-CvSU-Thesis-Form-Style-2016
+
+https://resources.latex-cloud-studio.com/learn/latex/how-to/thesis-dissertation
+
 ## Materials
 
 Printer: Epson L120

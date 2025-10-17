@@ -183,55 +183,6 @@
 \end{alwayssingle}}
 \ExplSyntaxOff
 
-% DEDICATION
-%
-% The dedication environment makes sure the dedication gets its
-% own page and is set out in verse format.
-
-\newenvironment{dedication}
-{\begin{alwayssingle}
-    \thispagestyle{empty}
-    \begin{center}
-    \vspace*{1.5cm}
-    {\LARGE }
-    \vspace{0.5cm}\par
-    \begin{minipage}{0.8\textwidth}
-    \centering
-    \normalfont\itshape
-}
-{\end{minipage}\end{center}\end{alwayssingle}}
-
-
-% ACKNOWLEDGEMENTS
-%
-% The acknowledgements environment puts a large, bold, centered 
-% "Acknowledgements" label at the top of the page. The acknowledgements
-% themselves appear in a quote environment, i.e. tabbed in at both sides, and
-% on its own page.
-
-\newenvironment{acknowledgements}
-{\begin{alwayssingle} \thispagestyle{empty}
-\begin{center}
-\vspace*{1.5cm}
-{\Large \bfseries Acknowledgements}
-\end{center}
-\vspace{0.5cm}
-\begin{quote}}
-{\end{quote}\end{alwayssingle}}
-
-% The acknowledgementslong environment puts a large, bold, centered 
-% "Acknowledgements" label at the top of the page. The acknowledgement itself 
-% does not appears in a quote environment so you can get more in.
-
-\newenvironment{acknowledgementslong}
-{\begin{alwayssingle} \thispagestyle{empty}
-\begin{center}
-\vspace*{1.5cm}
-{\Large \bfseries Acknowledgements}
-\end{center}
-\vspace{0.5cm}}
-{\end{alwayssingle}}
-
 % STATEMENT OF ORIGINALITY (AS SUGGESTED BY GSW)
 %
 % The originality environment puts a large, bold, centered 
@@ -310,13 +261,3 @@
     \end{center}}
 {\end{alwayssingle}}
 
-
-%ROMANPAGES
-%
-% The romanpages environment set the page numbering to lowercase roman one
-% for the contents and figures lists. It also resets
-% page-numbering for the remainder of the dissertation (arabic, starting at 1).
-
-\newenvironment{romanpages}
-{\cleardoublepage\setcounter{page}{1}\renewcommand{\thepage}{\roman{page}}}
-{\cleardoublepage\renewcommand{\thepage}{\arabic{page}}\setcounter{page}{1}}
