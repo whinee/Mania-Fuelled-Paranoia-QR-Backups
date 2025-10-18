@@ -28,6 +28,8 @@ https://www.scribd.com/presentation/655248817/Seminar-Presentation-for-CvSU-Thes
 
 https://resources.latex-cloud-studio.com/learn/latex/how-to/thesis-dissertation
 
+https://haivuuk.github.io/LaTeX-Guides/thesis.html
+
 ## Materials
 
 Printer: Epson L120

@@ -34,7 +34,7 @@
 
 % \RequirePackage{fix-cm}		% This provides font scaling for computer modern. The default LaTeX font. Comment this out if you are using another font.
 
-\documentclass[12pt]{thesis} % tell the compiler to use the template
+\documentclass[12pt]{base} % tell the compiler to use the template
 
 % XXXXXX load any additional packages, don't worry too much about this now, as you go along you will likely need to use some special packages for particular problems like full page tables etc.. This is where you tell the compiler what packages it should load before it tried to build your document.
 
@@ -44,8 +44,6 @@
 
 % Otherwise the title should wrap and adjust size automatically.
 % If your title still overruns you should probably consider a shorter title
-
-\subtitle{A Self-Contained QR-Code Archival System for Long-Term Information Preservation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %note if you want to apply a custom logo it can be written below here
@@ -58,20 +56,7 @@
 %\setcustomlogo{logo2.pdf, logo.pdf}	%XXXXXXX custom logos
 %\setcustomlogo{logo2.pdf}
 
-\uniname{PLACEHOLDER: University}  %XXXXXXX your university name
-
-\author{A.K.A LYRA PHASMA}                           %XXXXXXX your name
-
-\super{PLACEHOLDER: Supervisor} %note this command changes the supervisor listing based on number included
-
-%\renewcommand{\submittedtext}{change the default text here if needed} 
-\award{Bachelor of Science in Computer Science}                     %XXXXXXX the degree name
-
-\faculty{College of Engineering and Information Technology}                  %XXXXXXX The name of the faculty for your school
-\school{Department of Information Technology} %XXXXXXX the full name of the school
-
-\degreedate{2027}                          %XXXXXXX the degree date
-%end the preamble and start the document
+\author{a.k.a Lyra Phasma}                           %XXXXXXX your name
 
 \begin{document}
 % \DeclareDatamodelFields[type=field,datatype=date]{eventdate}
@@ -83,38 +68,18 @@
 %XXXXXX when the compiler hits an \include{file_name} or \subfile{file_name} command it switches to that file goes all the way through it and comes back to this one. When you are working on single chapters you can comment out the other chapters so the document builds faster
 
 \begin{romanpages}          % start roman page numbering
-\maketitle                  % create a title page from the preamble info
-\subfile{1_thesis/statement_of_originality}        % include the statement_of_originality.tex file
-\subfile{1_thesis/dedication}        % include the dedication.tex file
-\subfile{1_thesis/acknowledgements}   % include the acknowledgements.tex file
-\subfile{1_thesis/abstract}          % include the abstract.tex
+% \maketitle                  % create a title page from the preamble info
+\subfile{2_codex/dedication}        % include the dedication.tex file
+\subfile{2_codex/acknowledgements}   % include the acknowledgements.tex file
 \tableofcontents            % generate and include a table of contents
 \listoffigures              % generate and include a list of figures
 \listoftables				% generate and include a list of tables
-\subfile{1_thesis/preface}        % include the preface.tex file
+\subfile{2_codex/preface}        % include the preface.tex file
 \end{romanpages}            % end roman page numbering
 
-%XXXXXXXnow include the files of latex for each of the etc
-% \subfile{chp1/doc1}
-% \subfile{chp2/doc2}
+\subfile{2_codex/math/main}
 
-\subfile{1_thesis/chapters/1_introduction}
-
-\subfile{1_thesis/chapters/2_rrl}
-
-\subfile{1_thesis/chapters/3_methodology}
-
-\appendix
-% \part*{Appendix: Corpus of Arcane Texts}
-% \addcontentsline{toc}{part}{Appendix: Corpus of Arcane Texts}
-% \setcounter{chapter}{0}
-% \renewcommand{\thechapter}{\arabic{chapter}}
-
-% \subfile{math/main}
-
-% \subfile{qr/main}
-
-% \subfile{conclusions}
+\subfile{2_codex/qr/main}
 
 \printbibliography
 

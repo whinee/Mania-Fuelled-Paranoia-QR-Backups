@@ -165,3 +165,53 @@ backend=bibtex      % biber or bibtex
 urlseen = {Retrieved},
 }
 
+\ifSubfilesClassLoaded{%
+    \edef\FontPath{\subfix{.assets/fonts/}}
+	\addbibresource{\subfix{refs.bib}}
+}{%
+    \def\FontPath{.assets/fonts/}
+	\addbibresource{refs.bib}
+} % fixes bibliography so it works with subfiles.
+
+% --- Main font setup ---
+\setmainfont[
+  Path=\FontPath,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+  ItalicFont  = *-RegularItalic,
+  BoldItalicFont = *-BoldItalic,
+]{Manrope}
+
+% --- Additional fonts ---
+\newfontfamily\Manrope[Path=\FontPath]{Manrope-Regular.ttf}
+\newfontfamily\ManropeBold[Path=\FontPath]{Manrope-Bold.ttf}
+\newfontfamily\ManropeExtraBold[Path=\FontPath]{Manrope-ExtraBold.ttf}
+\newfontfamily\ComicMono[Path=\FontPath,Scale=0.9]{ComicMono.ttf}
+\setmonofont[Path=\FontPath]{CommitMono-700-Regular.otf}
+
+\newfontfamily\NotoSansRegular[Path=\FontPath]{NotoSans-Regular.ttf}
+\newfontfamily\NotoSansJPRegular[Path=\FontPath]{NotoSansJP-Regular.ttf}
+\newfontfamily\Unifont[Path=\FontPath]{unifont.otf}
+\newfontfamily\LastResort[Path=\FontPath]{LastResort-Regular.ttf}
+\newfontfamily\Fontified[Path=\FontPath]{Fontified.ttf}
+
+
+% --- Symbol/CJK transitions ---
+% \setDefaultTransitions{\Unifont}{\Unifont}
+% \setTransitionsForSymbols{\LastResort}{\normalfont}
+% \setTransitionsForCJK{\NotoSansJPRegular}{\normalfont}
+% \setTransitionsFor{BoxDrawing}{\Unifont}{\normalfont}
+
+% --- Title commands ---
+\newcommand{\HUGETITLE}{\fontsize{3em}{4em}\selectfont\ManropeExtraBold}
+\newcommand{\HUGE}{\fontsize{2em}{3em}\selectfont\ManropeExtraBold}
+
+%input macros (i.e. write your own macros file called mymacros.tex 
+%and uncomment the next line)
+%\include{mymacros}
+
+\baselineskip=18pt plus1pt
+
+%set the number of sectioning levels that get number and appear in the contents
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
