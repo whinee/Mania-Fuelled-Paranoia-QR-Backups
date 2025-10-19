@@ -69,21 +69,39 @@
 
 \begin{romanpages}          % start roman page numbering
 % \maketitle                  % create a title page from the preamble info
-\subfile{2_codex/dedication}        % include the dedication.tex file
-\subfile{2_codex/acknowledgements}   % include the acknowledgements.tex file
+
+\begin{titlepage}
+  \centering
+  \vspace*{\fill}
+  {\HUGETITLE\bfseries Mania-Fuelled Paranoia: \par}
+  \vspace{0.25em}
+  {\HUGE How to Survive the Apocalypse by Printing Your Sh*t in QR Codes \par}
+  \vspace{1.5em}
+  {\Large Version 0.1.0\par}
+  \vspace{2em}
+  {\Large aka. Lyra Phasma\par}
+  \vspace{1em}
+  {\Large June 5, 2025\par}
+  \vspace*{\fill}
+\end{titlepage}
+
+\subfile{./2_codex/dedication}        % include the dedication.tex file
+\subfile{./2_codex/acknowledgements}   % include the acknowledgements.tex file
 \tableofcontents            % generate and include a table of contents
 \listoffigures              % generate and include a list of figures
 \listoftables				% generate and include a list of tables
-\subfile{2_codex/preface}        % include the preface.tex file
+\subfile{./2_codex/preface}        % include the preface.tex file
 \end{romanpages}            % end roman page numbering
 
-\subfile{2_codex/math/main}
+\subfile{./2_codex/math/main}
 
-\subfile{2_codex/qr/main}
+\subfile{./2_codex/qr/main}
 
 \printbibliography
 
 %now enable appendix numbering format and include any appendices
 \appendix
+
+\subfile{./2_codex/appendix}
 
 \end{document}

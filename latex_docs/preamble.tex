@@ -56,22 +56,6 @@
 \usepackage{cellspace}
 \usepackage{tablefootnote}
 \usepackage{nameref}
-\usepackage[%
-backend=bibtex      % biber or bibtex
-%,style=authoryear    % Alphabeticalsch
-,style=numeric-comp  % numerical-compressed
-,sorting=none        % no sorting
-,sortcites=true      % some other example options ...
-,block=none
-,indexing=false
-,citereset=none
-,isbn=true
-,url=true
-,doi=true            % prints doi
-,natbib=true         % if you need natbib functions
-,dateabbrev=false
-,alldates=long
-]{biblatex}
 \usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -79,8 +63,25 @@ backend=bibtex      % biber or bibtex
 \usepackage[CJK]{ucharclasses}
 \usepackage{makeidx}
 \usepackage{setspace}
+\usepackage[%
+    backend=biber,      % biber or bibtex
+    %style=authoryear,    % Alphabeticalsch
+    style=apa,  % numerical-compressed
+    sorting=nyt,        % no sorting
+    sortcites=true,      % some other example options ...
+    block=none,
+    indexing=true,
+    citereset=none,
+    isbn=true,
+    url=true,
+    doi=true,            % prints doi
+    natbib=false,        % APA uses its own citation commands
+    dateabbrev=false,
+    alldates=long,
+    eprint=false,
+]{biblatex}
 
-
+\DeclareLanguageMapping{english}{english-apa}
 % \captionsetup[longtable]{skip=0.5em}
 
 \makeindex

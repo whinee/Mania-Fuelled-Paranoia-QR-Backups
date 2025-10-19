@@ -59,7 +59,7 @@ bootstrap:
 #     latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex -shell-escape main
 
 jis_x_0208_to_tex:
-    python scripts/jis_x_0208_to_tex.py >| thesis/qr/shift_jis_x_0208.tex
+    python scripts/jis_x_0208_to_tex.py >| latex_docs/2_codex/qr/shift_jis_x_0208.tex
 
 bundle:
     scriptmerge compilepy -c -o backup.py allaboutqr/backup.py

@@ -1,8 +1,12 @@
-\documentclass[../../1_thesis]{subfiles}
+\documentclass[../../2_codex]{subfiles}
 
 \begin{document}
 
 \chapter{Mathematics}
+
+\section{Discrete Mathematics}
+
+\input{./discrete.tex}
 
 \section{Set Theory}
 
@@ -22,18 +26,11 @@ S &= \{a, b, c\} \\
 Let $A = \{1, 2, 3\}$ and $B = \{3, 4, 5\}$:
 
 \begin{align*}
-    \text{Union: } & A \cup B = \{1, 2, 3, 4, 5\} \\
-    \text{Intersection: } & A \cap B = \{3\} \\
-    \text{Complement: } & A \setminus B = \{1, 2\} \\
-    \text{Symmetric Difference: } & A \,\triangle\, B = \{1, 2, 4, 5\}
+    \text{\textbf{Union: }} & A \cup B = \{1, 2, 3, 4, 5\} \\
+    \text{\textbf{Intersection: }} & A \cap B = \{3\} \\
+    \text{\textbf{Complement: }} & A \setminus B = \{1, 2\} \\
+    \text{\textbf{Symmetric Difference: }} & A \,\triangle\, B = \{1, 2, 4, 5\}
 \end{align*}
-
-\begin{description}[leftmargin=!,align=right,labelwidth=11em]
-  \item[Union] $A \cup B = \{1, 2, 3, 4, 5\}$
-  \item[Intersection] $A \cap B = \{3\}$
-  \item[Complement] $A \setminus B = \{1, 2\}$
-  \item[Symmetric Difference] $A \,\triangle\, B = \{1, 2, 4, 5\}$
-\end{description}
 
 \textbf{Cartesian products}
 
@@ -48,11 +45,5 @@ B \times A = \{(3,1), (3,2), (4,1), (4,2)\}
 \[
 A \times B \neq B \times A
 \]
-
-\newpage
-
-\section{Discrete Mathematics}
-
-\input{./discrete.tex}
 
 \end{document}

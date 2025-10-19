@@ -42,22 +42,26 @@ XOR & $\oplus$ & Exclusive Or \\ \hline
 \subsection{Truth Tables}
 
 \begin{multicols}{2}
-
-\begin{table}[H]
 \centering
-\caption{Negation Truth Table}
-\begin{tabular}[t]{|c|c|}
+
+\begin{tabular}{>{\centering\arraybackslash}m{0.45\textwidth}}
+
+\begin{minipage}[c][12em][c]{\linewidth}
+\centering
+\captionof{table}{Negation Truth Table}
+\begin{tabular}{|c|c|}
 \hline
 \textbf{P} & \textbf{$\sim$P} \\ \hline
 T & F \\ \hline
 F & T \\ \hline
 \end{tabular}
-\end{table}
+\end{minipage}
+\\
 
-\begin{table}[H]
+\begin{minipage}[c][12em][c]{\linewidth}
 \centering
-\caption{Conjuction Truth Table}
-\begin{tabular}[t]{|c|c|c|}
+\captionof{table}{Conjunction Truth Table}
+\begin{tabular}{|c|c|c|}
 \hline
 \textbf{P} & \textbf{Q} & \textbf{P $\land$ Q} \\ \hline
 T & T & T \\ \hline
@@ -65,12 +69,13 @@ T & F & F \\ \hline
 F & T & F \\ \hline
 F & F & F \\ \hline
 \end{tabular}
-\end{table}
+\end{minipage}
+\\
 
-\begin{table}[H]
+\begin{minipage}[c][12em][c]{\linewidth}
 \centering
-\caption{Disjunction Truth Table}
-\begin{tabular}[t]{|c|c|c|}
+\captionof{table}{Disjunction Truth Table}
+\begin{tabular}{|c|c|c|}
 \hline
 \textbf{P} & \textbf{Q} & \textbf{P $\lor$ Q} \\ \hline
 T & T & T \\ \hline
@@ -78,12 +83,13 @@ T & F & T \\ \hline
 F & T & T \\ \hline
 F & F & F \\ \hline
 \end{tabular}
-\end{table}
+\end{minipage}
+\\
 
-\begin{table}[H]
+\begin{minipage}[c][12em][c]{\linewidth}
 \centering
-\caption{Biconditional Truth Table}
-\begin{tabular}[t]{|c|c|c|}
+\captionof{table}{Biconditional Truth Table}
+\begin{tabular}{|c|c|c|}
 \hline
 \textbf{P} & \textbf{Q} & \textbf{P $\leftrightarrow$ Q} \\ \hline
 T & T & T \\ \hline
@@ -91,12 +97,19 @@ T & F & F \\ \hline
 F & T & F \\ \hline
 F & F & T \\ \hline
 \end{tabular}
-\end{table}
+\end{minipage}
+\\
 
-\begin{table}[H]
+\end{tabular}
+
+% ------------
+
+\begin{tabular}{>{\centering\arraybackslash}m{0.45\textwidth}}
+
+\begin{minipage}[c][12em][c]{\linewidth}
 \centering
-\caption{Implication Truth Table}
-\begin{tabular}[t]{|c|c|c|}
+\captionof{table}{Implication Truth Table}
+\begin{tabular}{|c|c|c|}
 \hline
 \textbf{P} & \textbf{Q} & \textbf{P $\to$ Q} \\ \hline
 T & T & T \\ \hline
@@ -104,25 +117,27 @@ T & F & F \\ \hline
 F & T & T \\ \hline
 F & F & T \\ \hline
 \end{tabular}
-\end{table}
+\end{minipage}
+\\
 
-\begin{table}[H]
+\begin{minipage}[c][12em][c]{\linewidth}
 \centering
-\caption{NAND Truth Table}
-\begin{tabular}[t]{|c|c|c|}
+\captionof{table}{NAND Truth Table}
+\begin{tabular}{|c|c|c|}
 \hline
-\textbf{P} & \textbf{Q} & \textbf{P $\uparrow$ Q} \\ \hline
-T & T & F \\ \hline
-T & F & T \\ \hline
-F & T & T \\ \hline
-F & F & T \\ \hline
+\textbf{P} & \textbf{Q} & \textbf{P $\land$ Q} \\ \hline
+T & T & T \\ \hline
+T & F & F \\ \hline
+F & T & F \\ \hline
+F & F & F \\ \hline
 \end{tabular}
-\end{table}
+\end{minipage}
+\\
 
-\begin{table}[H]
+\begin{minipage}[c][12em][c]{\linewidth}
 \centering
-\caption{NOR Truth Table}
-\begin{tabular}[t]{|c|c|c|}
+\captionof{table}{NOR Truth Table}
+\begin{tabular}{|c|c|c|}
 \hline
 \textbf{P} & \textbf{Q} & \textbf{P $\downarrow$ Q} \\ \hline
 T & T & F \\ \hline
@@ -130,12 +145,13 @@ T & F & F \\ \hline
 F & T & F \\ \hline
 F & F & T \\ \hline
 \end{tabular}
-\end{table}
+\end{minipage}
+\\
 
-\begin{table}[H]
+\begin{minipage}[c][12em][c]{\linewidth}
 \centering
-\caption{XOR Truth Table}
-\begin{tabular}[t]{|c|c|c|}
+\captionof{table}{XOR Truth Table}
+\begin{tabular}{|c|c|c|}
 \hline
 \textbf{P} & \textbf{Q} & \textbf{P $\oplus$ Q} \\ \hline
 T & T & F \\ \hline
@@ -143,6 +159,9 @@ T & F & T \\ \hline
 F & T & T \\ \hline
 F & F & F \\ \hline
 \end{tabular}
-\end{table}
+\end{minipage}
+\\
+
+\end{tabular}
 
 \end{multicols}

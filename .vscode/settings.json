@@ -60,7 +60,6 @@
         "**/*.run.xml": true,
         "**/*.soc": true,
         "**/*.snm": true,
-        //   "**/*.blg": true,
         "**/*-SAVE-ERROR": true,
         "**/*.ind": true,
         "**/*.aux": true,
@@ -68,12 +67,13 @@
         "**/*-blx.bib": true,
         "**/*.idx": true,
         "**/*.ilg": true,
-        //   "**/*.log": true,
         "**/*.out": true,
         "**/*.toc": true,
         "**/*.lot": true,
         "**/*.bcf": true,
-        "**/*.xdv": true
+        "**/*.xdv": true,
+        //   "**/*.blg": true,
+        //   "**/*.log": true,
     },
     "latex-workshop.view.outline.sync.viewer": true,
 }
