@@ -1,3 +1,9 @@
+## To Study
+
+- Discrete maths: sets, logic, induction, functions, graphs, algorithms
+- Modern algebra: categories and groups, rings, fields
+- Linear algebra: linear systems of equations, vectors, linear transformations, vector spaces, eigen-everything, differentiation
+
 ## Resources
 
 ### Tools

@@ -1,0 +1,345 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/apasortcite//global/global/global}
+    \entry{denso-wave-qr-versions}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=75bba36e8e1a96a5ebb5b80eac7fe5dc}{%
+           family={{DENSO WAVE INCORPORATED}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{fullhash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{fullhashraw}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{bibnamehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authorbibnamehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authornamehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authorfullhash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authorfullhashraw}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Information capacity and versions of QR Code}}
+      \verb{urlraw}
+      \verb https://www.qrcode.com/en/about/version.html
+      \endverb
+      \verb{url}
+      \verb https://www.qrcode.com/en/about/version.html
+      \endverb
+      \warn{\item misc entry 'denso-wave-qr-versions' (refs.bib): Invalid format '2025-6-12' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{mw-2d}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4fd83033554a794212a177de8a7c6bdd}{%
+           family={{Merriam-Webster}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{fullhash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{fullhashraw}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{bibnamehash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{authorbibnamehash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{authornamehash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{authorfullhash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{authorfullhashraw}{4fd83033554a794212a177de8a7c6bdd}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{2D}
+      \verb{urlraw}
+      \verb https://www.merriam-webster.com/dictionary/2D
+      \endverb
+      \verb{url}
+      \verb https://www.merriam-webster.com/dictionary/2D
+      \endverb
+      \warn{\item misc entry 'mw-2d' (refs.bib): Invalid format '2025-6-12' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{wikipedia-api}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{1}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{API}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/API
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/API
+      \endverb
+      \warn{\item misc entry 'wikipedia-api' (refs.bib): Invalid format '2025-6-12' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{wikipedia-ISO-8859-1}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{2}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{{ISO/IEC 8859-1}}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+      \endverb
+    \endentry
+    \entry{wikipedia-qr}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{QR code}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/QR_code
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/QR_code
+      \endverb
+      \warn{\item misc entry 'wikipedia-qr' (refs.bib): Invalid format '2025-6-6' of date field 'urldate' - ignoring}
+    \endentry
+  \enddatalist
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{denso-wave-qr-versions}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=75bba36e8e1a96a5ebb5b80eac7fe5dc}{%
+           family={{DENSO WAVE INCORPORATED}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{fullhash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{fullhashraw}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{bibnamehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authorbibnamehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authornamehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authorfullhash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authorfullhashraw}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Information capacity and versions of QR Code}}
+      \verb{urlraw}
+      \verb https://www.qrcode.com/en/about/version.html
+      \endverb
+      \verb{url}
+      \verb https://www.qrcode.com/en/about/version.html
+      \endverb
+      \warn{\item misc entry 'denso-wave-qr-versions' (refs.bib): Invalid format '2025-6-12' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{mw-2d}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4fd83033554a794212a177de8a7c6bdd}{%
+           family={{Merriam-Webster}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{fullhash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{fullhashraw}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{bibnamehash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{authorbibnamehash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{authornamehash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{authorfullhash}{4fd83033554a794212a177de8a7c6bdd}
+      \strng{authorfullhashraw}{4fd83033554a794212a177de8a7c6bdd}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{2D}
+      \verb{urlraw}
+      \verb https://www.merriam-webster.com/dictionary/2D
+      \endverb
+      \verb{url}
+      \verb https://www.merriam-webster.com/dictionary/2D
+      \endverb
+      \warn{\item misc entry 'mw-2d' (refs.bib): Invalid format '2025-6-12' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{wikipedia-api}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{1}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{API}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/API
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/API
+      \endverb
+      \warn{\item misc entry 'wikipedia-api' (refs.bib): Invalid format '2025-6-12' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{wikipedia-ISO-8859-1}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{2}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{{ISO/IEC 8859-1}}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+      \endverb
+    \endentry
+    \entry{wikipedia-qr}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{QR code}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/QR_code
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/QR_code
+      \endverb
+      \warn{\item misc entry 'wikipedia-qr' (refs.bib): Invalid format '2025-6-6' of date field 'urldate' - ignoring}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

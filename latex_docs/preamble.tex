@@ -64,24 +64,26 @@
 \usepackage{makeidx}
 \usepackage{setspace}
 \usepackage[%
-    backend=biber,      % biber or bibtex
-    %style=authoryear,    % Alphabeticalsch
-    style=apa,  % numerical-compressed
-    sorting=nyt,        % no sorting
-    sortcites=true,      % some other example options ...
+    backend=biber,
+    %style=authoryear,
+    style=apa, 
+    citestyle=authoryear,
+    sorting=nyt,
+    sortcites=true,
     block=none,
     indexing=true,
     citereset=none,
     isbn=true,
     url=true,
-    doi=true,            % prints doi
+    doi=true,
     natbib=false,        % APA uses its own citation commands
     dateabbrev=false,
     alldates=long,
-    eprint=false,
+    eprint=true,
 ]{biblatex}
 
 \DeclareLanguageMapping{english}{english-apa}
+\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
 % \captionsetup[longtable]{skip=0.5em}
 
 \makeindex
@@ -216,3 +218,37 @@ urlseen = {Retrieved},
 %set the number of sectioning levels that get number and appear in the contents
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+
+\DeclareFieldFormat{citehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+  \bibhyperref{#1}}
+
+\DeclareFieldFormat{textcitehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+  \bibhyperref{%
+    #1%
+    \ifbool{cbx:parens}
+      {\bibcloseparen\global\boolfalse{cbx:parens}}
+      {}}}
+
+\savebibmacro{cite}
+\savebibmacro{textcite}
+
+\renewbibmacro*{cite}{%
+  \printtext[citehyperref]{%
+    \restorebibmacro{cite}%
+    \usebibmacro{cite}}}
+
+\renewbibmacro*{textcite}{%
+  \ifboolexpr{
+    ( not test {\iffieldundef{prenote}} and
+      test {\ifnumequal{\value{citecount}}{1}} )
+    or
+    ( not test {\iffieldundef{postnote}} and
+      test {\ifnumequal{\value{citecount}}{\value{citetotal}}} )
+  }
+    {\DeclareFieldAlias{textcitehyperref}{noformat}}
+    {}%
+  \printtext[textcitehyperref]{%
+    \restorebibmacro{textcite}%
+    \usebibmacro{textcite}}}

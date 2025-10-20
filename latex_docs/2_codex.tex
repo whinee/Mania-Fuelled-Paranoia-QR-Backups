@@ -97,11 +97,28 @@
 
 \subfile{./2_codex/qr/main}
 
-\printbibliography
-
 %now enable appendix numbering format and include any appendices
+\newcounter{preappendix}
+\setcounter{preappendix}{\value{chapter}}
 \appendix
 
 \subfile{./2_codex/appendix}
+
+% End appendices: restore chapter numbering and hyperlink anchors
+\clearpage
+\setcounter{chapter}{\value{preappendix}}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\appendixname}{} % optional cosmetic cleanup
+
+% Fix hyperref anchors to avoid appendix namespace
+\makeatletter
+\let\@chapapp\chaptername      % revert "Chapter" text
+\let\Hy@chapter\@chapter        % fix hyperref anchors
+\makeatother
+
+\input{./attributions}
+
+\printbibliography
 
 \end{document}
