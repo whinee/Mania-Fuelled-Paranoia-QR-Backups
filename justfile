@@ -61,6 +61,9 @@ bootstrap:
 jis_x_0208_to_tex:
     python scripts/jis_x_0208_to_tex.py >| latex_docs/2_codex/qr/shift_jis_x_0208.tex
 
+gen_common_words:
+    tr '\n' '|' < data/google-10000-english-no-swears.txt >| dev/values/programmatic_variables/vale/styles/common_words.txt
+
 bundle:
     scriptmerge compilepy -c -o backup.py allaboutqr/backup.py
     pyminify -i --remove-literal-statements --rename-globals --remove-debug --remove-class-attribute-annotations backup.py
