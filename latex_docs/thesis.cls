@@ -221,7 +221,7 @@
 %the top of the page. The abstract itself appears in a quote environment,
 %i.e. tabbed in at both sides, and on its own page.
 
-\renewenvironment{abstract} {\begin{alwayssingle} \thispagestyle{empty}
+\newenvironment{abstract} {\begin{alwayssingle} \thispagestyle{empty}
     \begin{center}
     \vspace*{1.5cm}
     {\Large \bfseries  Abstract}

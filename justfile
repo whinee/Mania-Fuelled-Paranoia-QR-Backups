@@ -61,8 +61,13 @@ bootstrap:
 jis_x_0208_to_tex:
     python scripts/jis_x_0208_to_tex.py >| latex_docs/2_codex/qr/shift_jis_x_0208.tex
 
-gen_common_words:
-    tr '\n' '|' < data/google-10000-english-no-swears.txt >| dev/values/programmatic_variables/vale/styles/common_words.txt
+build_latex_docs file:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd latex_docs
+    latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex -shell-escape {{file}}
+    makeglossaries {{file}}
+    latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex -shell-escape {{file}}
 
 bundle:
     scriptmerge compilepy -c -o backup.py allaboutqr/backup.py

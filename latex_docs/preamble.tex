@@ -36,7 +36,6 @@
 
 \usepackage{graphicx} % Required for inserting images
 \usepackage{array}
-\usepackage{hyperref} % Makes links clickable
 \usepackage{fontspec}
 \usepackage{microtype}
 \usepackage{ragged2e}
@@ -81,6 +80,74 @@
     alldates=long,
     eprint=true,
 ]{biblatex}
+\usepackage{glossaries}
+\usepackage{hyperref} % Makes links clickable
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{etoolbox}
+
+% Define the sexy chapter style
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering} % font style
+  {%
+    \vspace{-3em}% adjust vertical space above
+    % --- top rule ---
+    \rule{\textwidth}{0.2pt}\\[0.8em]
+    % --- boxed number ---
+    \tikz[baseline=(char.base)]{
+      \node[draw, rectangle, inner sep=3pt, thick] (char) {\thechapter};
+    }\\[-0.3em]
+    % --- horizontal line beside number ---
+    \makebox[\textwidth]{\hrulefill\hspace{0.5em}}\\[1em]
+  }
+  {0pt}
+  {\Huge} % formatting for the title text
+  [\vspace{1em}\rule{\textwidth}{0.2pt}] % bottom rule after the title
+
+% Remove "Chapter" word before number
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\chaptername}{}
+
+% Optional: fix spacing before/after chapters
+\titlespacing*{\chapter}{0pt}{*3}{*2}
+
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering}
+  {%
+    % Top line with double-boxed number
+    \vspace{-2em}
+    \begin{tikzpicture}[baseline=(num.base)]
+        % Left line
+        \draw[thick] (-0.5\textwidth,0) -- (-1,0);
+        % Double box around number
+        \node[
+          draw,
+          double,
+          inner sep=12pt,
+          double distance=3pt,
+          minimum width=1.2em,
+          line width=1pt
+        ](num) {\textit{\thechapter}};
+        % Right line
+        \draw[thick] (1,0) -- (0.5\textwidth,0);
+    \end{tikzpicture}
+  }
+  {-1.5em}
+  {\Huge} % <-- formatting for title text
+  [\vspace{-1em}\rule{\textwidth}{0.4pt}] % bottom rule
+
+% Remove "Chapter" prefix
+\renewcommand{\chaptername}{}
+\renewcommand{\thechapter}{\arabic{chapter}}
+
+% Tweak spacing for sex appeal
+\titlespacing*{\chapter}{0pt}{*4}{*2}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\thepage} % page number at center bottom
+\renewcommand{\headrulewidth}{0pt} % optional: remove header line
 
 \DeclareLanguageMapping{english}{english-apa}
 \DeclareDelimFormat{nameyeardelim}{\addcomma\space}
@@ -116,11 +183,13 @@
 \setlength{\cellspacetoplimit}{3pt}
 \setlength{\cellspacebottomlimit}{0pt}
 \renewcommand{\arraystretch}{1.2}
-\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{-0.5em}{\Huge}
-\titlespacing*{\chapter}
-{0pt}    % left margin
-{-5em}    % space before
-{-0.5em}    % space after
+
+% \titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{-0.5em}{\Huge}
+% \titlespacing*{\chapter}
+% {0pt}    % left margin
+% {-5em}    % space before
+% {-0.5em}    % space after
+
 \setlist[enumerate,1]{left=0em, itemsep=-10pt, topsep=0pt}
 \setlist[enumerate]{left=0em, itemsep=-10pt, topsep=-10pt}
 
@@ -252,3 +321,5 @@ urlseen = {Retrieved},
   \printtext[textcitehyperref]{%
     \restorebibmacro{textcite}%
     \usebibmacro{textcite}}}
+
+\makeglossaries

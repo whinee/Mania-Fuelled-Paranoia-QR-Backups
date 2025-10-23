@@ -14,12 +14,6 @@
 //   ],
     "latex-workshop.latex.rootFile.useSubFile": true,
     "latex-workshop.latex.autoBuild.run": "onSave",
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "xelatex (subfiles ok)",
-            "tools": ["xelatex"]
-        }
-    ],
     "latex-workshop.latex.tools": [
         {
             "name": "xelatex",
@@ -28,8 +22,24 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
+                "-bibtex",
                 "-output-directory=%DIR%",
                 "%DOC%"
+            ]
+        },
+        {
+            "name": "makeglossaries",
+            "command": "makeglossaries",
+            "args": ["%DOCFILE%"]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex ➞ makeglossaries ➞ xelatex",
+            "tools": [
+                "xelatex",
+                "makeglossaries",
+                "xelatex"
             ]
         }
     ],
@@ -72,7 +82,12 @@
         "**/*.lot": true,
         "**/*.bcf": true,
         "**/*.xdv": true,
-        //   "**/*.blg": true,
+        "**/*.blg": true,
+        "**/*.glg": true,
+        "**/*.glo": true,
+        "**/*.gls": true,
+        "**/*.ist": true,
+        "**/*.xdy": true,
         //   "**/*.log": true,
     },
     "latex-workshop.view.outline.sync.viewer": true,

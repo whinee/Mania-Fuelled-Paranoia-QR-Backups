@@ -1,0 +1,5 @@
+extends: script
+message: "⚠️ Complex or uncommon word '%s' — consider defining it in your codex glossary."
+level: warning
+scope: raw
+script: ComplexWords.tengo

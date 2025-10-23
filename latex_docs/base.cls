@@ -2,7 +2,7 @@
 \ProvidesClass{base}[2025/10/08 Base class for documents]
 
 \ProcessOptions\relax
-\LoadClass[a4paper,twoside,openright]{report}
+\LoadClass[a4paper,twoside,openright]{book}
 
 % --- Shared packages ---
 \RequirePackage{graphicx}

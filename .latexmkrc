@@ -9,3 +9,8 @@ add_cus_dep('tex','pdf',0,'mytex');
 sub mytex {
     system("xelatex $_[0]");
 }
+
+add_cus_dep('glo', 'gls', 0, 'makeglossaries');
+sub makeglossaries {
+    system("makeglossaries $_[0]");
+}

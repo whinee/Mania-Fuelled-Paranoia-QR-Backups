@@ -1,4 +1,4 @@
-% !TeX program = pdflatex
+% !TeX program = XeLaTeX
 % This command controls the TeX engine you use: 
 %				pdfLaTeX		-	Standard and fastest engine, but limited support for modern and unicode fonts.
 %				XeLaTeX			-	Supports modern and unicode font.
@@ -82,6 +82,8 @@
 
 %XXXXXX when the compiler hits an \include{file_name} or \subfile{file_name} command it switches to that file goes all the way through it and comes back to this one. When you are working on single chapters you can comment out the other chapters so the document builds faster
 
+\frontmatter
+
 \begin{romanpages}          % start roman page numbering
 \maketitle                  % create a title page from the preamble info
 \subfile{1_thesis/statement_of_originality}        % include the statement_of_originality.tex file
@@ -97,6 +99,8 @@
 %XXXXXXXnow include the files of latex for each of the etc
 % \subfile{chp1/doc1}
 % \subfile{chp2/doc2}
+
+\mainmatter
 
 \subfile{1_thesis/chapters/1_introduction}
 
@@ -120,5 +124,9 @@
 
 %now enable appendix numbering format and include any appendices
 \appendix
+
+\backmatter
+
+\printglossary
 
 \end{document}
