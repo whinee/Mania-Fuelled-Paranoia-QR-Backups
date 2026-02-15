@@ -16,13 +16,16 @@
     "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.latex.tools": [
         {
-            "name": "xelatex",
-            "command": "xelatex",
+            "name": "latexmk",
+            "command": "latexmk",
             "args": [
+                "-xelatex",
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "-bibtex",
+                "-bibtex-",
+                "-extra-mem-top=10000000",
+                "-extra-mem-bot=10000000",
                 "-output-directory=%DIR%",
                 "%DOC%"
             ]
@@ -35,11 +38,12 @@
     ],
     "latex-workshop.latex.recipes": [
         {
-            "name": "xelatex ➞ makeglossaries ➞ xelatex",
+            "name": "latexmk ➞ makeglossaries ➞ latexmk",
             "tools": [
-                "xelatex",
+                "latexmk",
                 "makeglossaries",
-                "xelatex"
+                "latexmk",
+                "latexmk"
             ]
         }
     ],

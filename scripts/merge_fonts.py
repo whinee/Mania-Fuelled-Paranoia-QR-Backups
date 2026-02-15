@@ -1,7 +1,7 @@
 #!/usr/bin/env fontforge
 import os, fontforge
 
-fonts_path = "./thesis/fonts"
+fonts_path = "./latex_docs/.assets/fonts/"
 fonts = [
     "Manrope-Regular.ttf",      # base font
     "NotoSans-Regular.ttf",
@@ -9,14 +9,13 @@ fonts = [
     "unifont.otf",
 ]
 fonts = [os.path.join(fonts_path, f) for f in fonts]
-output = "thesis/fonts/Fontified.ttf"
+output = os.path.join(fonts_path, "Fontified.ttf")
 
 print("Creating merged font:", output)
 base = fontforge.open(fonts[0])
 base_em = base.em  # remember base units per em
 
 for fpath in fonts[1:]:
-    print("  -> Merging", fpath)
     font = fontforge.open(fpath)
     
     # Normalize scale to base font
@@ -25,7 +24,7 @@ for fpath in fonts[1:]:
     font.transform([scale_factor, 0, 0, scale_factor, 0, 0])
     
     # Align baseline if needed
-    font.ascent  = base.ascent
+    font.ascent = base.ascent
     font.descent = base.descent
     
     base.mergeFonts(font)
@@ -33,10 +32,8 @@ for fpath in fonts[1:]:
 
 # Rename merged font
 base.familyname = "Fontified"
-base.fontname   = "Fontified"
-base.fullname   = "Fontified"
-base.encoding   = "UnicodeFull"
+base.fontname = "Fontified"
+base.fullname = "Fontified"
+base.encoding = "UnicodeFull"
 base.generate(output)
 base.close()
-
-print("✅ Done! Saved as", output)

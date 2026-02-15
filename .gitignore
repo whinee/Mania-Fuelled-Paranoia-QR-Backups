@@ -49,11 +49,15 @@ yarn-error.log
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
+*.bbl-SAVE-ERROR
 *.bcf
 *.blg
 *-blx.aux
 *-blx.bib
 *.run.xml
+
+## Glossary
+*.ist
 
 ## Build tool auxiliary files:
 *.fdb_latexmk

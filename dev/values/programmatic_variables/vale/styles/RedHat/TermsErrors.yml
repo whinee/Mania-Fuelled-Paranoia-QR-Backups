@@ -2,13 +2,13 @@
 extends: substitution
 ignorecase: true
 level: error
-link: https://redhat-documentation.github.io/vale-at-red-hat/docs/main/reference-guide/termserrors/
+link: https://redhat-documentation.github.io/vale-at-red-hat/reference-guide.html#terms-errors
 message: "Use '%s' rather than '%s'."
 action:
   name: replace
 # swap maps tokens in form of bad: good
 swap:
-  "(?<!-)healthcheck|health-check": health check
+  "(?<!IdM |-)healthcheck|health-check": health check
   "(?<!-)pm": PM
   "(?<!-|.|{)env": environment
   "(?<!-|I )am": AM
@@ -85,7 +85,7 @@ swap:
   blink: flash
   blue screen of death: stop error
   boot diskette: boot disk
-  bootloader: boot loader
+  "(?<!GRand Unified |GRUB )bootloader": boot loader
   breadcrumbing: breadcrumb trail
   break point: breakpoint
   bring up: start|power on|open|turn on
@@ -164,7 +164,6 @@ swap:
   demilitarized zone: DMZ
   demon: daemon
   demount: dismount|unmount
-  deployment configuration: deployment
   depress: press|type
   deregister: unregister
   descendent: descendant
@@ -187,7 +186,6 @@ swap:
   emphasise: emphasize
   end user: user
   end-user interface: graphical interface|interface
-  enum: data enumeration
   EUI: graphical user interface|interface
   evangelist: influencer|advocate|ambassador
   fatal: unrecoverable
@@ -195,7 +193,6 @@ swap:
   finalise: finalize
   fire up: start
   fixed disk drive: hard disk drive
-  flavor: version|method
   focussed: focused
   forward compatible: compatible with later versions
   freezes: hangs|stops responding
@@ -338,7 +335,6 @@ swap:
   recognise: recognize
   Red Hat Java: Red Hat build of OpenJDK
   Red Hat OpenJDK|RHOJDK|Red Hat Open Java Development Kit: Red Hat build of OpenJDK
-  regex: regular expression
   requestor: requester
   right now: now
   right-hand: right
@@ -390,7 +386,6 @@ swap:
   syncpoint: sync point
   sysprep tool|sysprep process|sysprep function: sysprep
   system engineer: systems engineer
-  tablespace: table space
   TCP/IP network: Internet Protocol network|IP network
   teleprocessing line: telecommunication line|transmission line
   testcase: test case
@@ -438,10 +433,10 @@ swap:
   useable: usable
   utilize: use
   vanilla: uncustomized
-  versus: compared to
   virtual diskette drive: virtual floppy drive
   virtual diskette(?! drive): virtual floppy disk
   virtual DOS machine: DOS session
+  versus: compared to
   virtual hard disk: virtual hard drive
   virtual-equals-real: nonpageable
   virtual-equals-virtual: pageable

@@ -2,7 +2,7 @@
 \ProvidesClass{base}[2025/10/08 Base class for documents]
 
 \ProcessOptions\relax
-\LoadClass[a4paper,twoside,openright]{book}
+\LoadClass[a4paper,twoside,openright]{report}
 
 % --- Shared packages ---
 \RequirePackage{graphicx}
@@ -80,7 +80,7 @@
 {\begin{alwayssingle} \thispagestyle{empty}
 \begin{center}
 \vspace*{1.5cm}
-{\Large \bfseries Acknowledgements}
+{\chapter{Acknowledgements}}
 \end{center}
 \vspace{0.5cm}}
 {\end{alwayssingle}}

@@ -21,16 +21,16 @@ default:
 
 [private]
 nio:
-    @ python -m no_implicit_optional {{app_id}}; exit 0
+    @ python -m no_implicit_optional centennial_archival_project/allaboutqr; exit 0
 
 [private]
 ruff:
-    @ python -m ruff check --fix {{app_id}}; exit 0
+    @ python -m ruff check --fix centennial_archival_project/allaboutqr; exit 0
 
 # Lint codebase
 lint:
     @ just nio
-    @ python -m black -q {{app_id}}
+    @ python -m black -q centennial_archival_project/allaboutqr
     @ just ruff
 
 # Set up development environment
@@ -59,15 +59,18 @@ bootstrap:
 #     latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex -shell-escape main
 
 jis_x_0208_to_tex:
-    python scripts/jis_x_0208_to_tex.py >| latex_docs/2_codex/qr/shift_jis_x_0208.tex
+    python scripts/jis_x_0208_to_tex.py >| latex_docs/2_specs/qr/shift_jis_x_0208.tex
 
 build_latex_docs file:
     #!/usr/bin/env bash
     set -euo pipefail
     cd latex_docs
-    latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex -shell-escape {{file}}
+    latexmk -c {{file}}
+    latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex- -shell-escape {{file}} -extra-mem-top=10000000 -extra-mem-bot=10000000
+    biber {{file}}
     makeglossaries {{file}}
-    latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex -shell-escape {{file}}
+    latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex- -shell-escape {{file}} -extra-mem-top=10000000 -extra-mem-bot=10000000
+    latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -bibtex- -shell-escape {{file}} -extra-mem-top=10000000 -extra-mem-bot=10000000
 
 bundle:
     scriptmerge compilepy -c -o backup.py allaboutqr/backup.py
